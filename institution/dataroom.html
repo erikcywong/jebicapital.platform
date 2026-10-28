@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机构数据室 · 机构企业门户 — ZCC Platform</title>
+<meta name="description" content="机构数据室：文件夹树、机构权限矩阵、动态水印与下载审计，为战略投资方与碳买家提供受控的尽调与核证资料访问。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="institution" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P3 · 机构企业门户 / 机构数据室</div>
+        <h1 class="display">机构进来的每一份文件，<span class="grad">都带水印与审计</span></h1>
+        <p class="lede">文件夹按尽调模块组织，权限按机构逐夹授权；示例机构为 <strong>宏原贸易（战略投资方）</strong> 与 <strong>GreenLine Logistics（碳买家）</strong>，访问对象为演示项目 <strong>P-0007 云南保山咖啡鲜果加工厂</strong>。</p>
+        <div class="pill-row">
+          <a class="pill" href="ledger.html"><i class="dot"></i>碳权益台账</a>
+          <a class="pill" href="contracts.html"><i class="dot"></i>远期合同管理</a>
+          <a class="pill" href="retire.html"><i class="dot"></i>注销指令</a>
+          <a class="pill" href="disclosure.html"><i class="dot"></i>披露支持包</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>01</b> FOLDER TREE</div>
+            <h2 class="sec-title">文件夹树</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>文件夹</th><th class="n">文件数</th><th class="n">最近更新</th></tr></thead>
+                <tbody>
+                  <tr><td><b>01 公司与团队</b><br>注册文件、股权结构、核心团队履历</td><td class="n">18</td><td class="n mono">2026-10-21</td></tr>
+                  <tr><td><b>02 财务</b><br>SPV-07 审计报告、月度管理报表、银行流水</td><td class="n">26</td><td class="n mono">2026-10-24</td></tr>
+                  <tr><td><b>03 碳核证</b><br>批次 B-0127 监测报告、VCS 核证函、MRV 记录</td><td class="n">31</td><td class="n mono">2026-10-26</td></tr>
+                  <tr><td><b>04 法务</b><br>SPV 章程、土地租赁、社区协议</td><td class="n">14</td><td class="n mono">2026-10-12</td></tr>
+                  <tr><td><b>05 供应链</b><br>农户采购合同 v3、鲜果交割台账</td><td class="n">22</td><td class="n mono">2026-10-18</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">文件夹按尽调模块固定编号，项目方上传即归档，平台不做二次整理。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> ACCESS MATRIX</div>
+            <h2 class="sec-title">机构权限矩阵</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>机构 / 角色</th><th>文件夹</th><th>权限</th><th>有效期</th></tr></thead>
+                <tbody>
+                  <tr><td><b>宏原贸易</b><br>战略投资方</td><td>02 财务</td><td><span class="tag b">只读</span></td><td class="n">30 天</td></tr>
+                  <tr><td><b>宏原贸易</b><br>战略投资方</td><td>03 碳核证</td><td><span class="tag b">只读</span></td><td class="n">长期</td></tr>
+                  <tr><td><b>GreenLine Logistics</b><br>碳买家</td><td>03 碳核证</td><td><span class="tag b">只读</span></td><td class="n">长期</td></tr>
+                  <tr><td><b>平台管理员</b></td><td>全部（01–05）</td><td><span class="tag a">审计</span></td><td class="n">随任职</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">授权逐夹生效，到期自动回收；续期需项目方在数据室内重新确认。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> SECURITY</div>
+        <h2 class="sec-title">安全机制</h2>
+      </div>
+      <div class="grid g3">
+        <div class="card reveal">
+          <div class="card-ico">01</div>
+          <h3>动态水印</h3>
+          <p>每页 PDF / 文档叠加<strong>浏览者机构 ID + 账号 + 时间戳</strong>水印，截图外传可溯源到具体访问会话。</p>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <div class="card-ico a">02</div>
+          <h3>禁止下载白名单</h3>
+          <p>默认全部只读、禁止下载；仅白名单内文件（如核证函摘要）允许下载，且下载同样带水印。</p>
+        </div>
+        <div class="card reveal" data-delay="120">
+          <div class="card-ico v">03</div>
+          <h3>下载审计日志</h3>
+          <p>每次浏览、下载、水印尝试都落审计日志，项目方与平台管理员可随时回查，日志不可删除。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> AUTH LOG</div>
+        <h2 class="sec-title">授权与访问日志</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>谁</th><th>文件夹</th><th>动作</th><th class="n">时间</th><th class="n">有效期</th></tr></thead>
+            <tbody>
+              <tr><td><b>宏原贸易</b></td><td>02 财务</td><td>授权开通（只读）</td><td class="n mono">2026-10-09 10:22</td><td class="n">30 天 · 至 11-08</td></tr>
+              <tr><td><b>宏原贸易</b></td><td>03 碳核证</td><td>授权开通（只读·长期）</td><td class="n mono">2026-10-09 10:25</td><td class="n">长期</td></tr>
+              <tr><td><b>GreenLine Logistics</b></td><td>03 碳核证</td><td>授权开通（只读）</td><td class="n mono">2026-10-15 14:07</td><td class="n">长期</td></tr>
+              <tr><td><b>宏原贸易</b></td><td>02 财务</td><td>浏览 SPV-07 审计报告（含水印）</td><td class="n mono">2026-10-24 09:41</td><td class="n">会话内</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="../portals.html#p-institution"><span class="pn-l">门户说明</span><span class="pn-t">← 机构企业门户定义</span></a>
+      <a class="next" href="ledger.html"><span class="pn-l">下一步</span><span class="pn-t">碳权益台账 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MRV 任务 · 项目方门户 — ZCC Platform</title>
+<meta name="description" content="MRV 任务：监测期日历、数据上传清单、IoT 接入状态与核证方问询整改。示例项目 P-0007 云南保山咖啡鲜果加工厂。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="project" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P1 · 项目方门户 / MRV 任务</div>
+        <h1 class="display">减排量不是算出来的，<span class="grad">是监测出来的</span></h1>
+        <p class="lede">按监测期提交数据、回应问询、闭环整改。以下为 <strong>P-0007 云南保山咖啡鲜果加工厂</strong> · 批次 B-0127 的 MRV 执行状态。</p>
+        <div class="pill-row">
+          <a class="pill" href="dashboard.html"><i class="dot"></i>项目仪表盘</a>
+          <a class="pill" href="setup.html"><i class="dot"></i>注册与孵化</a>
+          <a class="pill" href="baseline.html"><i class="dot"></i>碳基线</a>
+          <a class="pill" href="materials.html"><i class="dot"></i>材料与 IR</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> MONITORING CALENDAR</div>
+        <h2 class="sec-title">监测期日历</h2>
+        <p class="sec-sub">首个监测期为 Q3 2026，此后每季度滚动提交；核证方在收到报告后 20 个工作日内出具意见。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>监测期</th><th class="n">数据截止</th><th>提交物</th><th>核证方</th><th class="n">状态</th></tr></thead>
+            <tbody>
+              <tr><td><b>Q3 2026</b>（07-01 – 09-30）</td><td class="n">10-10</td><td>监测报告 v2 + 电量/温度台账</td><td>绿证核证中心</td><td class="n"><span class="tag g">已提交</span></td></tr>
+              <tr><td><b>Q4 2026</b>（10-01 – 12-31）</td><td class="n">2027-01-10</td><td>监测报告 v3（进行中）</td><td>绿证核证中心</td><td class="n"><span class="tag a">进行中</span></td></tr>
+              <tr><td><b>Q5 2027</b>（01-01 – 03-31）</td><td class="n">2027-04-10</td><td>监测报告 v4（计划）</td><td>待指派</td><td class="n"><span class="tag">计划</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">Q3 2026 报告已于 10-18 提交核证，覆盖 92 天完整监测窗口，无缺测日。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> UPLOAD CHECKLIST</div>
+        <h2 class="sec-title">数据上传清单 · Q4 2026</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>数据项</th><th>来源</th><th class="n">截止</th><th class="n">状态</th></tr></thead>
+            <tbody>
+              <tr><td><b>9 月冷库电表读数</b></td><td>人工抄表 · 月报</td><td class="n">11-02</td><td class="n"><span class="tag a">即将逾期</span></td></tr>
+              <tr><td>农户采购台账（10 月）</td><td>合作社 · 月报</td><td class="n">11-05</td><td class="n"><span class="tag g">已交</span></td></tr>
+              <tr><td>IoT 冷库温度流</td><td>传感器 · 自动接入</td><td class="n">实时</td><td class="n"><span class="tag g">自动接入 · 正常</span></td></tr>
+              <tr><td>废水处理记录（10 月）</td><td>运营日志 · 月报</td><td class="n">11-05</td><td class="n"><span class="tag g">已交</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">电表读数逾期将冻结 Q4 报告预生成，并同步提醒平台运营。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> IOT TELEMETRY</div>
+        <h2 class="sec-title">IoT 接入状态</h2>
+      </div>
+      <div class="kpi-band three" style="grid-template-columns:repeat(3,1fr)">
+        <div class="kpi reveal"><div class="kpi-l" style="margin:0 0 8px">设备在线率（30 天）</div><div class="kpi-v g"><span data-count="97.2" data-dec="1">97.2</span><span class="u">%</span></div><div class="kpi-l">2 台温度探头曾短时离线</div></div>
+        <div class="kpi reveal" data-delay="60"><div class="kpi-l" style="margin:0 0 8px">最近心跳</div><div class="kpi-v" style="font-size:20px">10-28 08:46</div><div class="kpi-l">12 台设备 · 全部正常上报</div></div>
+        <div class="kpi reveal" data-delay="120"><div class="kpi-l" style="margin:0 0 8px">断点补传</div><div class="kpi-v b" style="font-size:20px">自动完成</div><div class="kpi-l">离线期间数据本地缓存后补传</div></div>
+      </div>
+      <div class="note reveal" style="margin-top:14px">
+        <span class="lab">说明</span>
+        <p style="margin:0">设备离线超过 4 小时会生成<b>断点区间记录</b>，恢复联网后自动补传并打标；补传数据在监测报告中单独列示，供核证方复核口径，不与实时流混算。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> QUERY &amp; REMEDIATION</div>
+        <h2 class="sec-title">问询与整改</h2>
+      </div>
+      <div class="split narrow">
+        <div class="card card-tall reveal">
+          <div class="card-ico a">Q-114</div>
+          <h3>核证方问询单 · 待回复</h3>
+          <p>绿证核证中心就 <b>9 月冷库电表读数口径</b>提问：抄表值与 IoT 电量流存在 3 天窗口差异，要求说明抄表日切规则并补充10 月口径统一方案。</p>
+          <div class="tag-row">
+            <span class="tag a">待回复</span>
+            <span class="tag">回复截止 11-04</span>
+            <span class="tag b">影响批次 B-0127</span>
+          </div>
+        </div>
+        <div class="reveal" data-delay="80">
+          <h3 style="font-size:15px;margin:0 0 12px">整改流程</h3>
+          <div class="steps">
+            <div class="step"><div class="step-n a">1</div><div class="step-body"><h4>数据缺陷识别 <span class="who">10-25</span></h4><p>核证方复核 Q3 报告时发现电表口径差异，开立问询单 Q-114。</p></div></div>
+            <div class="step"><div class="step-n b">2</div><div class="step-body"><h4>平台通知项目方 <span class="who">10-26</span></h4><p>站内信 + 短信双通道推送，计入仪表盘待办。</p></div></div>
+            <div class="step"><div class="step-n b">3</div><div class="step-body"><h4>项目方整改 <span class="who">11-02 前</span></h4><p>提交口径说明与统一后的抄表制度 v1.1。</p></div></div>
+            <div class="step"><div class="step-n b">4</div><div class="step-body"><h4>核证方复核 <span class="who">11-08 前</span></h4><p>20 个工作日内出具接受 / 需补充意见。</p></div></div>
+            <div class="step"><div class="step-n g">5</div><div class="step-body"><h4>关闭 <span class="who">目标 11-08</span></h4><p>关闭后 B-0127 批次恢复进入核证排期。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="materials.html"><span class="pn-l">上一页</span><span class="pn-t">← 融资材料与 IR</span></a>
+      <a class="next" href="../retail/discover.html"><span class="pn-l">社区端视角</span><span class="pn-t">社区发现页 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

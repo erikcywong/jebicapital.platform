@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>碳权益台账 · 机构企业门户 — ZCC Platform</title>
+<meta name="description" content="机构碳权益台账：权益总量、签发与注销 KPI，批次级台账主表，平台台账与登记簿所有权的边界说明，以及筛选与导出。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="institution" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P3 · 机构企业门户 / 碳权益台账</div>
+        <h1 class="display">每一吨权益，<span class="grad">都有合同与批次可溯</span></h1>
+        <p class="lede">台账是合同权益的聚合视图，逐批次登记标准、vintage、吨数与状态；示例数据来自 P-0007（SPV-07）与宏原贸易、GreenLine Logistics 两家机构的持有记录。</p>
+        <div class="pill-row">
+          <a class="pill" href="dataroom.html"><i class="dot"></i>机构数据室</a>
+          <a class="pill" href="contracts.html"><i class="dot"></i>远期合同管理</a>
+          <a class="pill" href="retire.html"><i class="dot"></i>注销指令</a>
+          <a class="pill" href="disclosure.html"><i class="dot"></i>披露支持包</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="kpi-band four reveal">
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">权益总量</div><div class="kpi-v b"><span>1,132</span><span class="u">tCO2e</span></div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">已签发</div><div class="kpi-v g"><span>281</span><span class="u">tCO2e</span></div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">待签发</div><div class="kpi-v a"><span>851</span><span class="u">tCO2e</span></div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">已注销</div><div class="kpi-v"><span>0</span><span class="u">tCO2e</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> LEDGER ENTRIES</div>
+        <h2 class="sec-title">台账主表</h2>
+        <p class="sec-sub">批次级记录，逐行对应一份碳权益合同项下的吨数；状态由签发、锁定、注销事件驱动。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>批次</th><th>Vintage</th><th>标准</th><th class="n">吨数</th><th class="n">状态</th><th>关联方</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">B-0127</td><td class="n">2026</td><td><span class="tag b">VCS</span></td><td class="n"><b>468</b></td><td class="n"><span class="tag a">审核中</span></td><td>宏原贸易 · 拟签发</td></tr>
+              <tr><td class="mono">B-0091</td><td class="n">2025</td><td><span class="tag b">GS</span></td><td class="n"><b>165</b></td><td class="n"><span class="tag g">可分配</span></td><td>宏原贸易 · 已签发</td></tr>
+              <tr><td class="mono">B-0074</td><td class="n">2025</td><td><span class="tag b">VCS</span></td><td class="n"><b>116</b></td><td class="n"><span class="tag v">已锁 · 质押中</span></td><td>SPV-07 融资质押</td></tr>
+              <tr><td class="mono">B-0058</td><td class="n">2024</td><td><span class="tag b">VCS</span></td><td class="n"><b>61</b></td><td class="n"><span class="tag r">已注销</span></td><td>宏原贸易 2026 披露季</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">示例汇总：已签发 281 t（165 + 116）对应可分配与锁定吨数，B-0058 的 61 t 已在登记簿完成注销。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split narrow">
+        <div class="card reveal">
+          <div class="card-ico">A</div>
+          <h3>平台台账（合同权益）</h3>
+          <p>记录机构在<strong>ZCC 合同框架</strong>下对项目碳权益的合同份额：谁有权获得哪一批次的多少吨、当前处于什么状态。</p>
+          <ul class="ul">
+            <li>由平台依据合同与签发事件维护</li>
+            <li>用于分配、锁定、注销指令的前置校验</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <div class="card-ico g">B</div>
+          <h3>登记簿所有权（Verra / GS）</h3>
+          <p>碳信用在 <strong>Verra / Gold Standard 登记簿</strong>中的法定所有权，以登记簿账户记录为准。</p>
+          <ul class="ul g">
+            <li><b>以登记簿为准</b>：任何权属争议以法定登记为准</li>
+            <li>台账仅做聚合视图，不创设或替代登记簿权利</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note reveal" style="margin-top:14px">
+        <div class="lab">边界说明</div>
+        <div>平台台账 ≠ 登记簿所有权。台账出现"可分配"不代表登记簿已过户；注销以登记簿执行结果为最终事实。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> FILTERS</div>
+            <h2 class="sec-title">筛选维度</h2>
+          </div>
+          <div class="tag-row" style="margin-top:0">
+            <span class="tag b">Vintage 2024</span>
+            <span class="tag b">Vintage 2025</span>
+            <span class="tag b">Vintage 2026</span>
+            <span class="tag g">VCS</span>
+            <span class="tag g">GS</span>
+            <span class="tag a">可分配</span>
+            <span class="tag a">审核中</span>
+            <span class="tag v">已锁</span>
+            <span class="tag r">已注销</span>
+          </div>
+          <p class="fig-cap" style="margin-top:14px">示例 chips：可按 vintage、标准、状态任意组合筛选台账条目。</p>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> EXPORT</div>
+            <h2 class="sec-title">导出字段清单</h2>
+          </div>
+          <div class="code">导出（CSV / XLSX / API）固定包含以下字段：
+<span class="k">项目 ID</span>        如 P-0007
+<span class="k">批次</span>          如 B-0127
+<span class="k">Vintage</span>       2024 / 2025 / 2026
+<span class="k">标准</span>          VCS / GS
+<span class="k">吨数</span>          tCO2e
+<span class="k">状态</span>          可分配 / 审核中 / 已锁 / 已注销
+<span class="k">关联合同号</span>     如 CT-2036</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="dataroom.html"><span class="pn-l">上一步</span><span class="pn-t">← 机构数据室</span></a>
+      <a class="next" href="contracts.html"><span class="pn-l">下一步</span><span class="pn-t">远期合同管理 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>退出管理 · 基金管理门户 — ZCC Platform</title>
+<meta name="description" content="退出事件登记、对价拆分（股权对价与碳权益对价分开入账）与基金—SPV 两层分配顺序。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="fund" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P4 · 基金管理门户 / 退出管理</div>
+        <h1 class="display">一笔并购，<span class="grad">两种对价</span>分开入账</h1>
+        <p class="lede">退出事件登记后，对价自动拆分为股权对价与碳权益对价两条线，分别进入 carry 瀑布与台账分配，全程可审计。</p>
+        <div class="pill-row">
+          <a class="pill" href="overview.html"><i class="dot"></i>AUM 与投资组合</a>
+          <a class="pill" href="capital-call.html"><i class="dot"></i>资本调用与 NAV</a>
+          <a class="pill" href="carry.html"><i class="dot"></i>carry 瀑布</a>
+          <a class="pill" href="exit.html"><i class="dot"></i>退出管理</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> EXIT EVENTS</div>
+        <h2 class="sec-title">退出事件登记</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>项目</th><th>退出方式</th><th class="n">预计 / 实际时点</th><th class="n">对价规模</th><th class="n">状态</th></tr></thead>
+            <tbody>
+              <tr><td><b>P-0007</b> 云南保山咖啡鲜果加工厂</td><td>并购退出（产业买方）</td><td class="n">拟 2028-Q2</td><td class="n">¥180m（预案）</td><td class="n"><span class="tag a">评估中</span></td></tr>
+              <tr><td><b>P-0003</b> 普洱孟连咖农合作社</td><td>老股转让（后续轮投资人）</td><td class="n">2026-08-30</td><td class="n">¥5.1m</td><td class="n"><span class="tag g">已交割</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">登记要素：退出方式、意向书版本、对价结构、交割先决条件清单；状态机驱动后续拆分与分配。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> CONSIDERATION SPLIT</div>
+        <h2 class="sec-title">对价拆分卡：P-0007 并购对价 ¥180m</h2>
+        <p class="sec-sub">股权对价与碳权益对价<b>分开计算、分开入账</b>：前者进入财务账并触发 carry 瀑布，后者进入碳权益台账并按归属比例穿透分配。</p>
+      </div>
+      <div class="grid g3">
+        <div class="card reveal">
+          <div class="card-ico">Σ</div>
+          <h3>并购对价合计</h3>
+          <p>¥180.0m</p>
+          <p>买方为产业并购方，交易结构为股权收购 + 碳资产打包受让。</p>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <div class="card-ico b">78%</div>
+          <h3>股权对价 ¥140m</h3>
+          <p>项目股权的转让对价，扣除交易费用后按基金持股比例确认，进入 <b>财务账</b> 与 carry 瀑布（口径 A/B 由合同决定）。</p>
+        </div>
+        <div class="card reveal" data-delay="120">
+          <div class="card-ico g">22%</div>
+          <h3>碳权益对价 ¥40m</h3>
+          <p>对应 P-0007 未注销碳权益存量 <b>4,320 tCO2e</b> 折算（约 ¥92.6/t），进入 <b>碳权益台账</b>，注销后按归属比例分配。</p>
+        </div>
+      </div>
+      <div class="note warn reveal" style="margin-top:16px">
+        <span class="lab">RULE</span>
+        <span>两项对价<b>分开计算、分开入账</b>：股权对价走基金财务账，碳权益对价走台账并须满足守恒约束（拟签发 = 已分配 + 已注销 + 留存）；任何一侧不得相互折抵或重复计入。</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> DISTRIBUTION ORDER</div>
+            <h2 class="sec-title">分配顺序</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>层级</th><th>动作</th><th>去向</th></tr></thead>
+                <tbody>
+                  <tr><td><b>S1</b> 对价入账</td><td>股权对价 / 碳权益对价分别确认</td><td>财务账 / 碳权益台账</td></tr>
+                  <tr><td><b>S2</b> 基金层面</td><td>执行 carry 瀑布（本金 → hurdle → catch-up → 80/20）</td><td>LP 分配 + GP carry</td></tr>
+                  <tr><td><b>S3</b> SPV 层面</td><td>基金分得份额与碳权益归属穿透至 SPV 份额表</td><td>个人投资者按份额到账</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">SPV-07 的份额表在交割日冻结，此后发生的转让不影响本次分配。</p>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>04</b> EXIT TIMELINE</div>
+            <h2 class="sec-title">退出时间线</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n">01</div><div class="step-body"><h4>意向书<span class="who">LOI</span></h4><p>锁定排他期与对价框架，登记退出事件。</p></div></div>
+            <div class="step"><div class="step-n">02</div><div class="step-body"><h4>尽调<span class="who">Diligence</span></h4><p>财务、法务、碳资产三线尽调；碳权益台账接受买方核验。</p></div></div>
+            <div class="step"><div class="step-n">03</div><div class="step-body"><h4>签约<span class="who">SPA</span></h4><p>签署股权收购与碳资产受让协议，明确对价拆分条款。</p></div></div>
+            <div class="step"><div class="step-n">04</div><div class="step-body"><h4>交割<span class="who">Closing</span></h4><p>先决条件满足，对价到账托管账户。</p></div></div>
+            <div class="step"><div class="step-n">05</div><div class="step-body"><h4>对价拆分<span class="who">Split</span></h4><p>系统按签约条款自动拆分股权 / 碳权益对价并双线入账。</p></div></div>
+            <div class="step"><div class="step-n g">06</div><div class="step-body"><h4>双收益报表归档<span class="who">Archive</span></h4><p>生成股权与碳权益双线收益报表，归档供 LP 与审计调阅。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="carry.html"><span class="pn-l">上一页</span><span class="pn-t">← carry 瀑布</span></a>
+      <a class="next" href="../admin/ops.html"><span class="pn-l">平台运营视角</span><span class="pn-t">分配与风控 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

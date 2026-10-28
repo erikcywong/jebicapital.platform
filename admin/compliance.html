@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合规配置器 · 运营后台门户 — ZCC Platform</title>
+<meta name="description" content="发行类型披露配置、KYC 等级矩阵、VASP 触发判断与平台四条红线速查。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="admin" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P6 · 平台运营后台 / 合规配置器</div>
+        <h1 class="display">发行类型、KYC 与 <span class="grad">VASP 红线</span>，一处配置</h1>
+        <p class="lede">每种发行类型绑定披露模板、审批人与冷却期；VASP 判定走结构化决策树，MVP 阶段硬性禁止代币化。</p>
+        <div class="pill-row">
+          <a class="pill" href="review.html"><i class="dot"></i>项目审核与费率</a>
+          <a class="pill" href="compliance.html"><i class="dot"></i>合规配置器</a>
+          <a class="pill" href="ops.html"><i class="dot"></i>分配与风控</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> ISSUANCE TYPES</div>
+        <h2 class="sec-title">发行类型配置</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>发行类型</th><th>监管口径</th><th>披露模板</th><th>审批人</th><th class="n">冷却期</th></tr></thead>
+            <tbody>
+              <tr><td><b>社区众筹</b></td><td>豁免口径 A（单项目限额内）</td><td>众筹风险揭示书 v3</td><td>合规 · 李川</td><td class="n">48 小时</td></tr>
+              <tr><td><b>私募</b></td><td>合格投资者认定</td><td>私募备忘录模板 v2</td><td>合规委员会</td><td class="n">7 天</td></tr>
+              <tr><td><b>基金 LP</b></td><td>基金业协会备案</td><td>LP 认购文件包 v1</td><td>合规委员会</td><td class="n">随备案节奏</td></tr>
+              <tr><td><b>碳远期</b></td><td>商品属性判定 · 非证券</td><td>碳远期交易须知 v1</td><td>合规 · 李川</td><td class="n">24 小时</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">模板版本与费率配置同样走版本化留痕；冷却期内投资人可无理由撤回认购。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> KYC MATRIX</div>
+        <h2 class="sec-title">KYC 等级矩阵</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>等级</th><th>适用对象</th><th>核验材料</th><th class="n">交易限额</th></tr></thead>
+            <tbody>
+              <tr><td><b>L1</b></td><td>个人小额</td><td>身份证 + 人脸核验</td><td class="n">单笔 ≤ ¥10,000 · 年累计 ≤ ¥50,000</td></tr>
+              <tr><td><b>L2</b></td><td>个人大额</td><td>L1 + 资金来源说明</td><td class="n">单笔 ≤ ¥500,000 · 年累计 ≤ ¥2,000,000</td></tr>
+              <tr><td><b>L3</b></td><td>机构</td><td>受益所有人识别 + 牌照 / 资质核验</td><td class="n">按尽调结论单独核定</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">等级升级需重新提交材料并通过合规复核；限额为平台统一配置，可按监管要求调整。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> VASP TRIGGER</div>
+            <h2 class="sec-title">VASP 触发判断</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n">01</div><div class="step-body"><h4>是否涉及代币化？</h4><p>发行或交易标的是否以代币 / 链上凭证形式存在。</p></div></div>
+            <div class="step"><div class="step-n">02</div><div class="step-body"><h4>是否托管私钥 / 钱包？</h4><p>平台或其关联方是否为客户保管私钥、提供链上转账服务。</p></div></div>
+            <div class="step"><div class="step-n a">03</div><div class="step-body"><h4>是 → 须持牌实体或持牌托管合作</h4><p>任一条件成立即触发 VASP 义务，业务上线前必须接入持牌实体或持牌托管合作方。</p></div></div>
+            <div class="step"><div class="step-n g">04</div><div class="step-body"><h4>否 → 平台仅做台账记录，不触发牌照</h4><p>当前架构下平台仅维护链下台账与权属登记，不触碰密钥，不构成 VASP 服务。</p></div></div>
+          </div>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>04</b> RED LINES</div>
+            <h2 class="sec-title">红线速查</h2>
+          </div>
+          <div class="grid g2">
+            <div class="card"><div class="card-ico r">01</div><h3>碳权益不单独证券化</h3><p>碳权益仅随项目权益附带归属，不得独立拆分为证券化产品。</p></div>
+            <div class="card"><div class="card-ico r">02</div><h3>不二级转让</h3><p>碳权益份额不提供二级市场转让通道，杜绝变相公开发行。</p></div>
+            <div class="card"><div class="card-ico r">03</div><h3>注销不可逆</h3><p>已注销吨位永久锁定，任何人（含运营）不可恢复或重发。</p></div>
+            <div class="card"><div class="card-ico r">04</div><h3>同一吨排他</h3><p>一吨碳权益同一时点只能处于一种状态：已分配 / 已注销 / 留存，守恒对账强制校验。</p></div>
+          </div>
+          <div class="note bad" style="margin-top:16px">
+            <span class="lab">MVP</span>
+            <span><b>MVP 阶段禁止引入代币化与链上交易</b>：任何涉及代币发行、链上转账或私钥托管的需求一律不上线，须先行完成合规评估与牌照安排。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="review.html"><span class="pn-l">上一页</span><span class="pn-t">← 项目审核与费率</span></a>
+      <a class="next" href="ops.html"><span class="pn-l">下一步</span><span class="pn-t">分配与风控 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

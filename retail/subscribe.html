@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>认购流程 · 社区投资者门户 — ZCC Platform</title>
+<meta name="description" content="认购状态机：KYC、承诺认购、托管打款、交割 SPV-07、7 天冷静期与份额确认，全程资金不经平台账户。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="retail" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P2 · 社区投资者门户 / 认购流程</div>
+        <h1 class="display">从 KYC 到份额确认，<span class="grad">钱始终在托管</span></h1>
+        <p class="lede">以下以示例投资者 <strong>投资者 ID U-2317</strong> 认购 <strong>P-0007（SPV-07）</strong>为例，演示 2026 年 10–12 月社区轮的完整认购状态机。</p>
+        <div class="pill-row">
+          <a class="pill" href="discover.html"><i class="dot"></i>项目发现</a>
+          <a class="pill" href="offer.html"><i class="dot"></i>发行页</a>
+          <a class="pill" href="subscribe.html"><i class="dot"></i>认购流程</a>
+          <a class="pill" href="portfolio.html"><i class="dot"></i>我的投资</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> SUBSCRIPTION STATE MACHINE</div>
+        <h2 class="sec-title">认购状态机</h2>
+        <p class="sec-sub">示例投资者当前停留在第 3 步「打款至托管」：KYC 已通过，认购承诺 ¥10,000 已锁定，等待托管账户确认到账。</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="step-n g" style="width:32px;height:32px;border-radius:8px;font-size:10px">01</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">KYC 身份核验 <span class="who">已完成 10-02</span></h4><p style="font-size:12.5px">实名认证与合格投资者自评通过。</p></div></div>
+        <div class="step"><div class="step-n g" style="width:32px;height:32px;border-radius:8px;font-size:10px">02</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">承诺认购 <span class="who">已完成 10-20</span></h4><p style="font-size:12.5px">提交 ¥10,000 认购承诺并签署电子意向。</p></div></div>
+        <div class="step"><div class="step-n a" style="width:32px;height:32px;border-radius:8px;font-size:10px">03</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">打款至托管 <span class="who">当前步骤</span></h4><p style="font-size:12.5px">资金汇入第三方托管专户，等待到账回执。</p></div></div>
+        <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">04</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">认购达标</h4><p style="font-size:12.5px">认购窗口结束且项目达标（¥5m）。</p></div></div>
+        <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">05</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">交割 SPV-07</h4><p style="font-size:12.5px">托管放款，SPV-07 份额表登记。</p></div></div>
+        <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">06</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">7 天冷静期</h4><p style="font-size:12.5px">交割后 7 天内可无条件全额撤回。</p></div></div>
+        <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">07</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">份额确认</h4><p style="font-size:12.5px">冷静期届满后出具交割确认书，份额正式生效。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split narrow">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> ESCROW</div>
+            <h2 class="sec-title">托管说明</h2>
+          </div>
+          <div class="note">
+            <span class="lab">ESCROW</span>
+            <span>认购资金<b>不进入平台任何账户</b>，全部存放于第三方托管专户；项目未达标即全额原路退回，达标后托管凭交割指令放款至 SPV-07。</span>
+          </div>
+          <div class="ul tight" style="margin-top:14px">
+            <li><b>托管方</b>：持牌第三方托管机构（演示占位）</li>
+            <li><b>达标前</b>：可随时撤回认购，资金 T+1 原路退回</li>
+            <li><b>达标后</b>：进入冷静期规则，见下方表格</li>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> ORDER MOCK</div>
+            <h2 class="sec-title">认购表单（演示）</h2>
+          </div>
+          <div class="grid g3">
+            <div class="card" style="padding:14px 16px"><h3 style="margin:0 0 4px">¥1,000</h3><p style="font-size:12px">体验档 · 最低门槛</p></div>
+            <div class="card" style="padding:14px 16px;border-color:var(--accent-line)"><h3 style="margin:0 0 4px;color:var(--accent)">¥10,000</h3><p style="font-size:12px">已选 · U-2317 当前承诺</p></div>
+            <div class="card" style="padding:14px 16px"><h3 style="margin:0 0 4px">¥100,000</h3><p style="font-size:12px">进阶档 · 对应约 39 吨远期权益</p></div>
+          </div>
+          <div class="ul tight" style="margin-top:14px">
+            <li><b>《投资协议》</b>——SPV-07 份额认购条款</li>
+            <li><b>《碳权益附属协议》</b>——附属合同碳权益归属与限制</li>
+            <li><b>《风险揭示书》</b>——已阅读并理解全部风险披露</li>
+          </div>
+          <p class="fig-cap" style="margin-top:12px">MOCK FORM · 演示页不提交任何真实数据。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> COOLING-OFF</div>
+        <h2 class="sec-title">冷静期规则</h2>
+        <p class="sec-sub">交割后 7 天冷静期是社区投资者的最后一道退出保护，规则全部写死、不可协商。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>规则</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td><b>7 天内无条件全额退</b></td><td>自交割确认日（以确认书日期为准）起 7 个自然日内，可无理由撤回，全额退还本金，不收取任何费用。</td></tr>
+              <tr><td><b>到账时限</b></td><td>冷静期内撤回的退款于受理后 <b>T+3 个工作日</b>内由托管专户原路退回投资者付款账户。</td></tr>
+              <tr><td><b>退出入口位置</b></td><td>「我的投资 → 待处理」组态中对应订单卡片提供<b>「冷静期撤回」</b>按钮，点击后二次确认即生效。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="offer.html"><span class="pn-l">上一步</span><span class="pn-t">← 发行页</span></a>
+      <a class="next" href="portfolio.html"><span class="pn-l">下一步</span><span class="pn-t">我的投资 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

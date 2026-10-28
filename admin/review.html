@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目审核与费率 · 运营后台门户 — ZCC Platform</title>
+<meta name="description" content="运营后台：入驻审核队列、审核要点 checklist、平台费率配置与五级审批流。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="admin" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P6 · 平台运营后台 / 项目审核与费率</div>
+        <h1 class="display">每个上线的项目，<span class="grad">都过同一张 checklist</span></h1>
+        <p class="lede">入驻审核五级流转，完整度评分不足不上会；费率配置带生效版本与修改人，任何调整可回溯。</p>
+        <div class="pill-row">
+          <a class="pill" href="review.html"><i class="dot"></i>项目审核与费率</a>
+          <a class="pill" href="compliance.html"><i class="dot"></i>合规配置器</a>
+          <a class="pill" href="ops.html"><i class="dot"></i>分配与风控</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> REVIEW QUEUE</div>
+        <h2 class="sec-title">入驻审核队列</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>项目</th><th>当前环节</th><th>地区</th><th class="n">完整度评分</th><th class="n">状态</th></tr></thead>
+            <tbody>
+              <tr><td><b>P-0021</b> 普洱宁洱鲜果脱皮站</td><td>合规复核</td><td>云南 · 普洱</td><td class="n">86</td><td class="n"><span class="tag a">待复核</span></td></tr>
+              <tr><td><b>P-0022</b> 西双版纳勐海发酵仓</td><td>初审</td><td>云南 · 西双版纳</td><td class="n">72</td><td class="n"><span class="tag">审核中</span></td></tr>
+              <tr><td><b>P-0023</b> 临沧耿马干燥厂房</td><td>初审</td><td>云南 · 临沧</td><td class="n">64</td><td class="n"><span class="tag a">材料待补</span></td></tr>
+              <tr><td><b>P-0020</b> 思茅咖啡机械租赁</td><td>终审</td><td>云南 · 思茅</td><td class="n">91</td><td class="n"><span class="tag g">已通过</span></td></tr>
+              <tr><td><b>P-0019</b> 红河绿春仓储改造</td><td>合规复核</td><td>云南 · 红河</td><td class="n">41</td><td class="n"><span class="tag r">已驳回</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">完整度评分 &lt; 70 不进入合规复核；驳回必须附理由与整改清单，项目方可重新提交。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> CHECKLIST</div>
+        <h2 class="sec-title">审核要点 checklist</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card reveal">
+          <div class="card-ico">01</div>
+          <h3>碳基线完整性</h3>
+          <p>基线因子来源、活动数据边界、历史 12 个月数据齐备；缺项自动标记并计入完整度评分。</p>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <div class="card-ico g">02</div>
+          <h3>土地 / 水权证明</h3>
+          <p>土地经营权或租赁合同、取水许可在有效期内；到期前 60 天触发续期提醒。</p>
+        </div>
+        <div class="card reveal" data-delay="120">
+          <div class="card-ico a">03</div>
+          <h3>供应链可追溯</h3>
+          <p>鲜果来源地块、批次号、加工记录三方对得上；无法追溯的批次不得进入签发范围。</p>
+        </div>
+        <div class="card reveal" data-delay="180">
+          <div class="card-ico v">04</div>
+          <h3>KYC 完成</h3>
+          <p>项目方实控人与受益所有人识别完成；机构另需牌照或资质核验（见合规配置器 L3）。</p>
+        </div>
+        <div class="card reveal" data-delay="240">
+          <div class="card-ico r">05</div>
+          <h3>发行类型匹配</h3>
+          <p>融资请求与发行类型（社区众筹 / 私募 / 基金 LP / 碳远期）口径一致，套用对应披露模板。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> FEE CONFIG</div>
+            <h2 class="sec-title">费率配置</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>费目</th><th class="n">费率</th><th class="n">生效版本</th><th class="n">修改人</th></tr></thead>
+                <tbody>
+                  <tr><td><b>社区众筹成功费</b></td><td class="n">5%</td><td class="n mono">v2.3 · 2026-09-01</td><td class="n">运营 · 张敏</td></tr>
+                  <tr><td><b>机构撮合费</b></td><td class="n">2%</td><td class="n mono">v1.7 · 2026-06-15</td><td class="n">运营 · 张敏</td></tr>
+                  <tr><td><b>碳服务成功费</b></td><td class="n">8%</td><td class="n mono">v1.2 · 2026-10-05</td><td class="n">合规 · 李川</td></tr>
+                  <tr><td><b>MRV 代办</b></td><td class="n">¥8,000 / 批次</td><td class="n mono">v1.0 · 2026-04-20</td><td class="n">运营 · 王磊</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">费率变更需双人复核；历史版本全量留痕，可在任一时点回放当时的费率口径。</p>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>04</b> APPROVAL FLOW</div>
+            <h2 class="sec-title">审批流</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n">01</div><div class="step-body"><h4>提交<span class="who">Project</span></h4><p>项目方完成六步诊断表单并上传材料。</p></div></div>
+            <div class="step"><div class="step-n">02</div><div class="step-body"><h4>初审<span class="who">Ops</span></h4><p>材料齐备性与完整度评分校验。</p></div></div>
+            <div class="step"><div class="step-n">03</div><div class="step-body"><h4>合规复核<span class="who">Compliance</span></h4><p>checklist 五项逐一核验，出具复核意见。</p></div></div>
+            <div class="step"><div class="step-n">04</div><div class="step-body"><h4>终审<span class="who">Committee</span></h4><p>审核委员会上线决议，绑定发行类型与费率版本。</p></div></div>
+            <div class="step"><div class="step-n g">05</div><div class="step-body"><h4>上线<span class="who">Live</span></h4><p>项目进入发现页与交易流程，进入持续监测。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="../portals.html#p-admin"><span class="pn-l">门户说明</span><span class="pn-t">← 运营后台门户定义</span></a>
+      <a class="next" href="compliance.html"><span class="pn-l">下一步</span><span class="pn-t">合规配置器 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

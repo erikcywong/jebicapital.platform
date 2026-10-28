@@ -1,39 +1,70 @@
 /* ============================================================
    ZCC Platform — shared chrome: header, footer, interactions
+   Portal-first navigation; supports subfolder pages via data-base
    ============================================================ */
 (function () {
   'use strict';
 
   var NAV = [
-    { id: 'index',        label: '概览',      href: 'index.html',        sub: 'Platform overview' },
-    { id: 'nav',          label: '功能导航',  href: 'nav.html',          sub: 'Function map' },
-    { id: 'architecture', label: '平台架构',  href: 'architecture.html',  sub: 'Architecture',
-      menu: [
-        { t: '六层功能架构', d: 'Layer 1 – 6', h: 'architecture.html#layers' },
-        { t: '数据底座',     d: '统一实体与事件总线', h: 'architecture.html#data' },
-        { t: '技术架构',     d: '前端 / 后端 / 集成', h: 'architecture.html#tech' },
-        { t: '守恒约束',     d: '不允许超额分配', h: 'architecture.html#invariant' }
-      ] },
-    { id: 'portals',      label: '门户矩阵',  href: 'portals.html',       sub: 'Portals' },
-    { id: 'carbon',       label: '碳权益层',  href: 'carbon.html',        sub: 'Carbon rights',
-      menu: [
-        { t: '碳资产台账',   d: '注册簿聚合视图', h: 'carbon.html#ledger' },
-        { t: 'MRV 状态机',   d: '七步端到端', h: 'carbon.html#mrv' },
-        { t: '双重计算防火墙', d: '一吨只能去一处', h: 'carbon.html#firewall' },
-        { t: '注销与披露包', d: '不可逆 + 数据准备', h: 'carbon.html#retire' }
-      ] },
-    { id: 'capital',      label: '资本栈',    href: 'capital.html',       sub: 'Capital stack',
-      menu: [
-        { t: '孵化层',       d: '可融资化 + 可测量化', h: 'capital.html#incubate' },
-        { t: '社区股权众筹', d: 'SPV 集中持股', h: 'capital.html#crowd' },
-        { t: '机构与基金',   d: '数据室 / 资本调用', h: 'capital.html#fund' },
-        { t: '退出与双收益', d: '股权 + 碳权益', h: 'capital.html#exit' }
-      ] },
-    { id: 'compliance',   label: '合规风控',  href: 'compliance.html',    sub: 'Compliance' },
-    { id: 'roadmap',      label: '路线图',    href: 'roadmap.html',       sub: 'Roadmap' }
+    { id: 'nav', label: '功能导航', href: 'nav.html', sub: 'Function map' },
+
+    { id: 'project', label: '项目方', href: 'project/dashboard.html', sub: 'Project portal', menu: [
+      { t: '项目仪表盘', d: 'KPI · 待办 · 时间线', h: 'project/dashboard.html' },
+      { t: '注册与孵化', d: '六步诊断 + 六项里程碑', h: 'project/setup.html' },
+      { t: '碳基线与预评估', d: 'CarbonProfile 草稿 · 不可交易', h: 'project/baseline.html' },
+      { t: '融资材料与 IR', d: '版本化文档 · 投资人关系', h: 'project/materials.html' },
+      { t: 'MRV 任务', d: '数据上传 · IoT · 整改回复', h: 'project/mrv.html' }
+    ] },
+
+    { id: 'retail', label: '社区投资者', href: 'retail/discover.html', sub: 'Retail portal', menu: [
+      { t: '项目发现', d: '筛选 · 排序 · 减排潜力评分', h: 'retail/discover.html' },
+      { t: '发行页', d: '故事 · 目标 · 风险披露', h: 'retail/offer.html' },
+      { t: '认购流程', d: '状态机 · 托管 · 冷静期', h: 'retail/subscribe.html' },
+      { t: '我的投资', d: '组合 · 碳权益穿透 · 通知', h: 'retail/portfolio.html' }
+    ] },
+
+    { id: 'institution', label: '机构企业', href: 'institution/dataroom.html', sub: 'Institution portal', menu: [
+      { t: '机构数据室', d: '文件夹级权限 · 水印 · 日志', h: 'institution/dataroom.html' },
+      { t: '碳权益台账', d: '按 vintage / 标准筛选导出', h: 'institution/ledger.html' },
+      { t: '远期合同管理', d: '价格公式 · 优先购买权窗口', h: 'institution/contracts.html' },
+      { t: '注销指令', d: '用途声明 · 双重校验 · 证书', h: 'institution/retire.html' },
+      { t: '披露支持包', d: '范围三 / 抵消 / 移除字段', h: 'institution/disclosure.html' }
+    ] },
+
+    { id: 'fund', label: '基金管理', href: 'fund/overview.html', sub: 'Fund portal', menu: [
+      { t: 'AUM 与投资组合', d: '承诺 / 已投 / 碳权益双栏', h: 'fund/overview.html' },
+      { t: '资本调用与 NAV', d: 'call notice · 分摊 · 季度估值', h: 'fund/capital-call.html' },
+      { t: 'carry 瀑布', d: '双口径 · 分配顺序', h: 'fund/carry.html' },
+      { t: '退出管理', d: '退出登记 · 对价拆分 · 分配', h: 'fund/exit.html' }
+    ] },
+
+    { id: 'verifier', label: '核证方', href: 'verifier/queue.html', sub: 'Verifier portal', menu: [
+      { t: '任务队列与历史', d: '待接单 / 审核中 / 已签发', h: 'verifier/queue.html' },
+      { t: '审核与签发', d: '三栏对照 · 守恒预检 · 驳回', h: 'verifier/review.html' }
+    ] },
+
+    { id: 'admin', label: '运营后台', href: 'admin/review.html', sub: 'Admin portal', menu: [
+      { t: '项目审核与费率', d: '入驻队列 · 费率配置', h: 'admin/review.html' },
+      { t: '合规配置器', d: '发行模板 · KYC 等级 · VASP', h: 'admin/compliance.html' },
+      { t: '分配与风控', d: '守恒事务 · 对账日报 · 争议', h: 'admin/ops.html' }
+    ] },
+
+    { id: 'platform', label: '平台层', href: 'architecture.html', sub: 'Platform spec', menu: [
+      { t: '平台总览', d: '定位 · 四原则 · 双轨图', h: 'index.html' },
+      { t: '平台架构', d: '六层 · 数据底座 · 守恒', h: 'architecture.html' },
+      { t: '门户矩阵', d: '权限矩阵 · 互盲设计', h: 'portals.html' },
+      { t: '碳权益层', d: '台账 · MRV · 防火墙 · 注销', h: 'carbon.html' },
+      { t: '资本栈', d: '孵化 · 众筹 · 基金 · 退出', h: 'capital.html' },
+      { t: '合规风控', d: '三实体 · VASP · 红线', h: 'compliance.html' },
+      { t: '实施路线图', d: '四阶段 · 阶段门 · KPI', h: 'roadmap.html' }
+    ] }
   ];
 
+  var ALIAS = { index: 'platform', architecture: 'platform', portals: 'platform',
+                carbon: 'platform', capital: 'platform', compliance: 'platform', roadmap: 'platform' };
   var current = document.body.getAttribute('data-page') || 'index';
+  current = ALIAS[current] || current;
+  var BASE = document.body.getAttribute('data-base') || '';
 
   function navHTML() {
     return NAV.map(function (n) {
@@ -43,33 +74,38 @@
       if (n.menu) {
         dd = '<div class="dropdown"><div class="dd-head">' + n.sub + '</div>' +
           n.menu.map(function (m) {
-            return '<a href="' + m.h + '">' + m.t + '<span>' + m.d + '</span></a>';
+            return '<a href="' + BASE + m.h + '">' + m.t + '<span>' + m.d + '</span></a>';
           }).join('') + '</div>';
       }
-      return '<div class="nav-item"><a class="nav-link' + on + '" href="' + n.href + '">' +
+      return '<div class="nav-item"><a class="nav-link' + on + '" href="' + BASE + n.href + '">' +
         n.label + caret + '</a>' + dd + '</div>';
     }).join('');
   }
 
   function mobileHTML() {
-    return NAV.map(function (n) {
+    var out = [];
+    NAV.forEach(function (n) {
       var on = n.id === current ? ' class="on"' : '';
-      return '<a' + on + ' href="' + n.href + '">' + n.label +
+      out.push('<a' + on + ' href="' + BASE + n.href + '">' + n.label +
         ' <span style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;margin-left:6px">' +
-        n.sub + '</span></a>';
-    }).join('');
+        n.sub + '</span></a>');
+      (n.menu || []).forEach(function (m) {
+        out.push('<a href="' + BASE + m.h + '" style="padding-left:28px;font-size:12.5px;color:var(--txt-2)">· ' + m.t + '</a>');
+      });
+    });
+    return out.join('');
   }
 
   var header = document.getElementById('topbar');
   if (header) {
     header.innerHTML =
-      '<a class="brand" href="index.html">' +
+      '<a class="brand" href="' + BASE + 'index.html">' +
         '<span class="brand-mark">ZC</span>' +
         '<span class="brand-txt"><span class="brand-name">ZCC Platform</span>' +
         '<span class="brand-sub">Zero-Carbon Coffee Capital Stack</span></span>' +
       '</a>' +
       '<nav class="nav">' + navHTML() + '</nav>' +
-      '<a class="nav-cta" href="roadmap.html">实施路线 <span>→</span></a>' +
+      '<a class="nav-cta" href="' + BASE + 'roadmap.html">实施路线 <span>→</span></a>' +
       '<button class="burger" id="burger" aria-label="菜单"><span></span><span></span><span></span></button>' +
       '<div class="mobile-menu" id="mobileMenu">' + mobileHTML() + '</div>';
 
@@ -93,28 +129,24 @@
             '<p>零碳咖啡产业链的分层资本配置与碳权益管理操作系统。股权与碳权益分离计价、耦合呈现；项目从孵化到退出始终携带同一套碳资产身份。</p>' +
           '</div>' +
           '<div class="foot-links">' +
-            '<a href="nav.html">功能导航</a>' +
-            '<a href="architecture.html">架构</a>' +
-            '<a href="portals.html">门户</a>' +
-            '<a href="carbon.html">碳权益</a>' +
-            '<a href="capital.html">资本栈</a>' +
-            '<a href="compliance.html">合规</a>' +
-            '<a href="roadmap.html">路线图</a>' +
+            '<a href="' + BASE + 'nav.html">功能导航</a>' +
+            '<a href="' + BASE + 'portals.html">门户矩阵</a>' +
+            '<a href="' + BASE + 'carbon.html">碳权益</a>' +
+            '<a href="' + BASE + 'capital.html">资本栈</a>' +
+            '<a href="' + BASE + 'compliance.html">合规</a>' +
+            '<a href="' + BASE + 'roadmap.html">路线图</a>' +
           '</div>' +
         '</div>' +
         '<div class="foot-meta">' +
-          '<span>产品规格 v1.0 · 内部设计文档 · 2026-10</span>' +
+          '<span>产品规格 v1.1 · 内部设计文档 · 2026-10</span>' +
           '<span>Not an offer of securities · 不构成任何证券发行或投资建议</span>' +
         '</div>' +
       '</div>';
   }
 
   /* ---------- scroll state ---------- */
-  var lastY = 0;
   function onScroll() {
-    var y = window.scrollY || window.pageYOffset;
-    if (header) header.classList.toggle('scrolled', y > 12);
-    lastY = y;
+    if (header) header.classList.toggle('scrolled', (window.scrollY || window.pageYOffset) > 12);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
