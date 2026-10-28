@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>远期合同管理 · 机构企业门户 — ZCC Platform</title>
+<meta name="description" content="机构远期合同管理：远期采购、优先购买权与分配协议清单，价格公式分步计算示例，行权窗口倒计时与条款清单。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="institution" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P3 · 机构企业门户 / 远期合同管理</div>
+        <h1 class="display">价格有公式，行权有窗口，<span class="grad">条款有清单</span></h1>
+        <p class="lede">合同围绕演示项目 <strong>P-0007（SPV-07）</strong> 展开：<strong>宏原贸易</strong>的远期采购与 <strong>GreenLine Logistics</strong> 的优先购买权，都在同一份条款框架下管理。</p>
+        <div class="pill-row">
+          <a class="pill" href="dataroom.html"><i class="dot"></i>机构数据室</a>
+          <a class="pill" href="ledger.html"><i class="dot"></i>碳权益台账</a>
+          <a class="pill" href="retire.html"><i class="dot"></i>注销指令</a>
+          <a class="pill" href="disclosure.html"><i class="dot"></i>披露支持包</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> CONTRACT LIST</div>
+        <h2 class="sec-title">合同列表</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>合同号</th><th>类型</th><th>对手方</th><th>关键条款</th><th class="n">状态</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">CT-2036</td><td><b>远期采购</b></td><td>宏原贸易 × P-0007</td><td>价格公式 = 指数价 + ¥18/t 固定溢价；交割窗口 <b>2027-Q2</b></td><td class="n"><span class="tag b">履行中</span></td></tr>
+              <tr><td class="mono">CT-2040</td><td><b>优先购买权</b></td><td>GreenLine Logistics</td><td>行权窗口 <b>2026-12-01 – 12-14</b>，对 B-0127 签发后吨数</td><td class="n"><span class="tag a">待行权</span></td></tr>
+              <tr><td class="mono">CT-2031</td><td><b>分配协议</b></td><td>SPV-07 权益方</td><td>签发吨数按 <b>60 / 30 / 10</b> 在项目方、宏原贸易、GreenLine 之间分配</td><td class="n"><span class="tag g">已生效</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> PRICING FORMULA</div>
+            <h2 class="sec-title">价格公式（CT-2036）</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n">1</div><div class="step-body"><h4>取指数价<span class="who">T+0 现货参考</span></h4><p>以交割窗口前一交易日碳信用指数收盘价为基准，示例取 <b>¥86/t</b>。</p></div></div>
+            <div class="step"><div class="step-n">2</div><div class="step-body"><h4>加固定溢价<span class="who">合同锁定</span></h4><p>无论指数涨跌，P-0007 交付的核证吨数享受 <b>¥18/t</b> 固定溢价，补偿品质与交付确定性。</p></div></div>
+            <div class="step"><div class="step-n g">3</div><div class="step-body"><h4>得出结算价</h4><p>结算价 = 指数价 + 固定溢价。<b>¥86/t + ¥18/t = ¥104/t</b>，按实际交割吨数结算。</p></div></div>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> ROFO WINDOW</div>
+            <h2 class="sec-title">优先购买权窗口（CT-2040）</h2>
+          </div>
+          <div class="card card-tall">
+            <div class="card-ico a">14d</div>
+            <h3>窗口期 2026-12-01 – 12-14</h3>
+            <p>GreenLine Logistics 在窗口内对 B-0127 签发吨数享有优先购买权，价格按 CT-2036 同一公式计算。</p>
+            <ul class="ul">
+              <li><b>行权方式：</b>邮件正式函件 + 平台指令双通道，任一通道在窗口内送达即生效</li>
+              <li><b>逾期视为放弃：</b>窗口关闭后未行权，对应吨数按 CT-2031 分配比例释放</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> TERMS CHECKLIST</div>
+        <h2 class="sec-title">条款清单（Mock）</h2>
+      </div>
+      <div class="grid g4">
+        <div class="card reveal">
+          <div class="card-ico">A</div>
+          <h3>交付义务</h3>
+          <p>SPV-07 在交割窗口内按核定吨数交付；监测与核证完成是交付前提。</p>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <div class="card-ico b">B</div>
+          <h3>质量规格</h3>
+          <p>tCO2e 数量、核证标准（VCS / GS）、vintage 年份三项均须与台账批次一致。</p>
+        </div>
+        <div class="card reveal" data-delay="120">
+          <div class="card-ico a">C</div>
+          <h3>回购与替换</h3>
+          <p>吨数瑕疵时优先用同标准同 vintage 替换；无法替换则按结算价回购。</p>
+        </div>
+        <div class="card reveal" data-delay="180">
+          <div class="card-ico r">D</div>
+          <h3>违约处理</h3>
+          <p>逾期交付或吨数不足触发违约金条款，并可扣减未解锁权益份额。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="ledger.html"><span class="pn-l">上一步</span><span class="pn-t">← 碳权益台账</span></a>
+      <a class="next" href="retire.html"><span class="pn-l">下一步</span><span class="pn-t">注销指令 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

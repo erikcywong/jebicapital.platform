@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审核与签发 · 核证方门户 — ZCC Platform</title>
+<meta name="description" content="批次 B-0127 审核工作台：项目方数据、IoT 原始流与历史基线三栏对照，守恒预检、签发动作与驳回流程。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="verifier" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P5 · 核证方门户 / 审核与签发</div>
+        <h1 class="display">三路数据对得上，<span class="grad">才轮到签发按钮</span></h1>
+        <p class="lede">以 <strong>B-0127 · P-0007 云南保山咖啡鲜果加工厂</strong>为例：监测期 2026 年 7–9 月，距审核截止 9 天，核证机构 V-09 泛亚核证。</p>
+        <div class="pill-row">
+          <a class="pill" href="queue.html"><i class="dot"></i>任务队列与历史</a>
+          <a class="pill" href="review.html"><i class="dot"></i>审核与签发</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> THREE-WAY RECONCILIATION</div>
+        <h2 class="sec-title">三栏对照</h2>
+        <p class="sec-sub">同一监测期、同一口径下的三方数据比对；差异超过容差即触发问询。示例：电表读数差异 +3.2%，在 ±5% 容差内。</p>
+      </div>
+      <div class="grid g3">
+        <div class="card reveal">
+          <div class="card-ico">A</div>
+          <h3>项目方提交数据</h3>
+          <p>监测报告 v2 · 7–9 月电表读数 <b>41,860 kWh</b>，柴油替代量 18.2 t，自核算减排 468 tCO2e。</p>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <div class="card-ico">B</div>
+          <h3>IoT 原始流（平台直采）</h3>
+          <p>电表直采累计 <b>43,200 kWh</b>，与提交值差异 <b>+3.2%</b>（<span class="tag g" style="margin:0">容差内</span>）；光伏并网曲线连续无断点。</p>
+        </div>
+        <div class="card reveal" data-delay="120">
+          <div class="card-ico a">C</div>
+          <h3>历史基线</h3>
+          <p>CarbonProfile 基线：柴油脱果胶 3 年均值折算 <b>58,900 kWh 等效</b>；基线完整度 92/100。</p>
+        </div>
+      </div>
+      <p class="fig-cap reveal" style="margin-top:12px">THREE-WAY CHECK · B-0127 · 差异来源已归因于表计校准延迟，不构成缺陷。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split narrow">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> CONSERVATION PRE-CHECK</div>
+            <h2 class="sec-title">守恒预检</h2>
+          </div>
+          <div class="note ok">
+            <span class="lab">PASSED</span>
+            <span>拟签发 <b>468 tCO2e</b> ≤ 监测期核算减排 <b>468 tCO2e</b>，等式成立，<b>守恒预检通过</b>。</span>
+          </div>
+          <div class="tbl-wrap" style="margin-top:14px">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>分配预演</th><th class="n">比例</th><th class="n">吨数</th></tr></thead>
+                <tbody>
+                  <tr><td><b>战投（机构远期合同）</b></td><td class="n mono">60%</td><td class="n mono">280.8 t</td></tr>
+                  <tr><td><b>SPV-07（社区投资者池）</b></td><td class="n mono">30%</td><td class="n mono">140.4 t</td></tr>
+                  <tr><td><b>平台留存（储备池）</b></td><td class="n mono">10%</td><td class="n mono">46.8 t</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap" style="margin-top:12px">签发后由平台守恒事务执行分配，本页仅为预演视图。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> ISSUE CHECKLIST</div>
+            <h2 class="sec-title">签发动作清单</h2>
+          </div>
+          <div class="ul g">
+            <li><b>核证报告 PDF</b>——双人复核签署后生成，版本号 V-09-B0127-R1</li>
+            <li><b>签发确认</b>——确认 468 tCO2e 与方法学口径，双签生效</li>
+            <li><b>登记簿 API 提交</b>——批次 B-0127 状态推送至碳权益台账，状态「已签发」</li>
+          </div>
+          <p style="font-size:13px;color:var(--txt-2);line-height:1.7;margin:12px 0 0">三项动作按顺序原子执行：任一步失败即整体回滚，台账不会出现半签发状态。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split narrow">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>04</b> REJECTION FLOW</div>
+            <h2 class="sec-title">驳回流程</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n r" style="width:32px;height:32px;border-radius:8px;font-size:10px">01</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">缺陷定性</h4><p style="font-size:12.5px">按重大/一般缺陷分级，注明对应方法学条款。</p></div></div>
+            <div class="step"><div class="step-n a" style="width:32px;height:32px;border-radius:8px;font-size:10px">02</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">整改通知</h4><p style="font-size:12.5px">推送项目方 MRV 待办，设定整改截止日。</p></div></div>
+            <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">03</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">重审</h4><p style="font-size:12.5px">整改材料重新进入三栏比对，不通过则再次驳回。</p></div></div>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>05</b> TEMPLATES</div>
+            <h2 class="sec-title">驳回理由模板</h2>
+          </div>
+          <div class="ul tight">
+            <li><b>T1 数据断链</b>：监测期 IoT 直采流存在 &gt;24h 连续断点，且项目方未提供等效旁证。</li>
+            <li><b>T2 基线不符</b>：实测工况偏离 CarbonProfile 基线假设超过 15%，需重算基线后重报。</li>
+            <li><b>T3 超范围签发</b>：自核算减排量高于守恒预检上限，拟签发吨数不成立。</li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="queue.html"><span class="pn-l">上一步</span><span class="pn-t">← 任务队列与历史</span></a>
+      <a class="next" href="../admin/ops.html"><span class="pn-l">平台运营视角</span><span class="pn-t">分配与风控 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

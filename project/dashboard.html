@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目仪表盘 · 项目方门户 — ZCC Platform</title>
+<meta name="description" content="项目方门户首页：孵化完成度、融资进度、核证状态、待办与项目时间线。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="project" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P1 · 项目方门户 / 项目仪表盘</div>
+        <h1 class="display">我的项目现在卡在哪，<span class="grad">下一步做什么</span></h1>
+        <p class="lede">首屏只回答三个问题：孵化走到哪、融资到多少、核证什么状态。示例数据来自演示项目 <strong>P-0007 云南保山咖啡鲜果加工厂</strong>。</p>
+        <div class="pill-row">
+          <a class="pill" href="setup.html"><i class="dot"></i>注册与孵化</a>
+          <a class="pill" href="baseline.html"><i class="dot"></i>碳基线</a>
+          <a class="pill" href="materials.html"><i class="dot"></i>材料与 IR</a>
+          <a class="pill" href="mrv.html"><i class="dot"></i>MRV 任务</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="kpi-band four reveal">
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">孵化完成度</div><div class="kpi-v b"><span data-count="72">72</span><span class="u">%</span></div><div class="meter" style="margin-top:10px"><i style="width:72%"></i></div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">融资进度</div><div class="kpi-v">¥<span data-count="2.4" data-dec="1">2.4</span><span class="u">m / ¥5m</span></div><div class="meter" style="margin-top:10px"><i style="width:48%"></i></div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">核证状态</div><div class="kpi-v a" style="font-size:20px">审核中</div><div class="kpi-l">批次 B-0127 · 距截止 9 天</div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">待办事项</div><div class="kpi-v"><span data-count="5">5</span></div><div class="kpi-l">其中 2 项即将逾期</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>01</b> TODO QUEUE</div>
+            <h2 class="sec-title">待办清单</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>任务</th><th class="n">截止</th><th class="n">状态</th></tr></thead>
+                <tbody>
+                  <tr><td><b>上传 9 月冷库电表读数</b></td><td class="n">11-02</td><td class="n"><span class="tag a">即将逾期</span></td></tr>
+                  <tr><td><b>回复核证方问询 Q-114</b></td><td class="n">11-04</td><td class="n"><span class="tag a">即将逾期</span></td></tr>
+                  <tr><td>补充农户采购合同 v3 签署页</td><td class="n">11-10</td><td class="n"><span class="tag">进行中</span></td></tr>
+                  <tr><td>季度 IR 更新草稿</td><td class="n">11-15</td><td class="n"><span class="tag">进行中</span></td></tr>
+                  <tr><td>水权证明有效期续期</td><td class="n">12-01</td><td class="n"><span class="tag g">已安排</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">逾期任务会同时推送给项目方与平台运营，并降低项目在发现页的排序权重。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> PROJECT TIMELINE</div>
+            <h2 class="sec-title">最近事件</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">10-24</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">社区轮交割确认</h4><p style="font-size:12.5px">¥2.4m 已到位，SPV-07 份额表生成，投资者通知已发送。</p></div></div>
+            <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">10-18</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">监测报告 v2 提交核证</h4><p style="font-size:12.5px">覆盖 7–9 月监测期，核证方已接单。</p></div></div>
+            <div class="step"><div class="step-n" style="width:32px;height:32px;border-radius:8px;font-size:10px">10-09</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">数据室新授权</h4><p style="font-size:12.5px">两家机构获得 02 财务文件夹只读权限（30 天有效）。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> QUICK ACTIONS</div>
+        <h2 class="sec-title">常用入口</h2>
+      </div>
+      <div class="grid g4">
+        <a class="card reveal" href="setup.html"><div class="card-ico">01</div><h3>注册与孵化</h3><p>六步诊断表单与里程碑完成度。</p></a>
+        <a class="card reveal" data-delay="60" href="baseline.html"><div class="card-ico g">02</div><h3>碳基线录入</h3><p>因子匹配、预评估、预备档案。</p></a>
+        <a class="card reveal" data-delay="120" href="materials.html"><div class="card-ico a">03</div><h3>材料与 IR</h3><p>文档版本库与投资人动态。</p></a>
+        <a class="card reveal" data-delay="180" href="mrv.html"><div class="card-ico v">04</div><h3>MRV 任务</h3><p>监测期日历、数据上传、整改。</p></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="../portals.html#p-project"><span class="pn-l">门户说明</span><span class="pn-t">← 项目方门户定义</span></a>
+      <a class="next" href="setup.html"><span class="pn-l">下一步</span><span class="pn-t">注册与孵化 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

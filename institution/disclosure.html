@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>披露支持包 · 机构企业门户 — ZCC Platform</title>
+<meta name="description" content="机构披露支持包：平台字段到常见披露框架的映射、宏原贸易 2026 披露季报表预览、CSV / XLSX / API 导出通道与免责声明。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="institution" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P3 · 机构企业门户 / 披露支持包</div>
+        <h1 class="display">注销与持有的每一个数字，<span class="grad">都能对齐披露框架</span></h1>
+        <p class="lede">平台把台账、合同与注销证书整理成披露就绪的数据包；示例机构为 <strong>宏原贸易</strong>，覆盖其 2026 披露季口径。</p>
+        <div class="pill-row">
+          <a class="pill" href="dataroom.html"><i class="dot"></i>机构数据室</a>
+          <a class="pill" href="ledger.html"><i class="dot"></i>碳权益台账</a>
+          <a class="pill" href="contracts.html"><i class="dot"></i>远期合同管理</a>
+          <a class="pill" href="retire.html"><i class="dot"></i>注销指令</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> FIELD MAPPING</div>
+        <h2 class="sec-title">披露字段映射</h2>
+        <p class="sec-sub">平台字段逐项映射到常见披露框架的通用字段口径；具体框架版本以机构所选报告模板为准。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>平台字段</th><th>披露框架字段</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td><b>注销用途声明</b></td><td>范围三类别</td><td>注销目的映射到购买的商品与服务、商务出行等范围三类别</td></tr>
+              <tr><td><b>抵消 vs 移除</b></td><td> mitigation / removal 分类</td><td>按项目方法学区分避免排放与移除，分开列示</td></tr>
+              <tr><td><b>方法学</b></td><td> methodologies 引用</td><td>批次对应的方法学编号与版本随证书导出</td></tr>
+              <tr><td><b>标准</b></td><td> registry / standard</td><td>VCS 或 GS，含登记簿账户信息</td></tr>
+              <tr><td><b>Vintage</b></td><td> vintage year</td><td>按年份拆分，便于新旧 vintage 偏好检查</td></tr>
+              <tr><td><b>注销目的</b></td><td> retirement reason</td><td>与注销证书字段一一对应</td></tr>
+              <tr><td><b>双重计算声明</b></td><td> corresponding adjustments / 重复计算声明</td><td>平台出具双重计算校验记录，供审计师复核</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> REPORT PREVIEW</div>
+            <h2 class="sec-title">报表预览（宏原贸易 2026 披露季）</h2>
+          </div>
+          <div class="kpi-band" style="grid-template-columns:repeat(3,1fr)">
+            <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">已注销</div><div class="kpi-v g"><span>61</span><span class="u">tCO2e</span></div><div class="kpi-l">B-0058 · vintage 2024 · VCS</div></div>
+            <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">待注销</div><div class="kpi-v a"><span>220</span><span class="u">tCO2e</span></div><div class="kpi-l">计划于 2026-12 窗口执行</div></div>
+            <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">权益余额</div><div class="kpi-v b"><span>851</span><span class="u">tCO2e</span></div><div class="kpi-l">含待签发批次 B-0127</div></div>
+          </div>
+          <p class="fig-cap">数据快照日期 2026-10-26，随批次状态与注销事件自动更新。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> EXPORT CHANNELS</div>
+            <h2 class="sec-title">导出格式</h2>
+          </div>
+          <div class="grid g3">
+            <div class="card"><div class="card-ico">CSV</div><h3>CSV</h3><p>逐行批次记录，适合财务与 ESG 系统批量导入。</p></div>
+            <div class="card"><div class="card-ico g">XLSX</div><h3>XLSX</h3><p>带字段对齐说明的报表工作簿，供审计师直接批注。</p></div>
+            <div class="card"><div class="card-ico v">API</div><h3>API</h3><p>只读接口按披露季拉取快照，字段与 CSV 完全一致。</p></div>
+          </div>
+          <p class="fig-cap" style="margin-top:12px">三种通道共用同一字段字典：项目 ID、批次、vintage、标准、吨数、状态、关联合同号、注销证书字段。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="note warn reveal">
+        <div class="lab">免责声明</div>
+        <div>平台只做<strong>数据准备</strong>：整理、映射与导出注销与持有数据。<strong>不承诺任何披露框架的合规结论</strong>——披露是否满足目标框架要求，由企业与审计师负责判定。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="../carbon.html"><span class="pn-l">平台层文档</span><span class="pn-t">← 碳权益层规格</span></a>
+      <a class="next" href="retire.html"><span class="pn-l">上一步</span><span class="pn-t">注销指令 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

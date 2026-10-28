@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>分配与风控 · 运营后台门户 — ZCC Platform</title>
+<meta name="description" content="碳权益守恒对账日报、双重计算告警面板、争议工单与处置流程，任何不相等立即告警。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="admin" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P6 · 平台运营后台 / 分配与风控</div>
+        <h1 class="display">守恒不等式：<span class="grad">拟签发 = 已分配 + 已注销 + 留存</span></h1>
+        <p class="lede">每日对账，一行不等即冻结相关台账并告警。示例日报覆盖批次 B-0127（拟签发 468 tCO2e，60% 战投 / 30% SPV-07 / 10% 平台留存）。</p>
+        <div class="pill-row">
+          <a class="pill" href="review.html"><i class="dot"></i>项目审核与费率</a>
+          <a class="pill" href="compliance.html"><i class="dot"></i>合规配置器</a>
+          <a class="pill" href="ops.html"><i class="dot"></i>分配与风控</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> CONSERVATION DAILY</div>
+        <h2 class="sec-title">守恒对账日报（2026-10-28）</h2>
+        <p class="sec-sub">单位 tCO2e。任何一行不满足等式即显示 ✗ 并触发告警，相关台账自动冻结。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>批次</th><th class="n">拟签发</th><th class="n">已分配</th><th class="n">已注销</th><th class="n">留存</th><th class="n">校验</th></tr></thead>
+            <tbody>
+              <tr><td><b>B-0127</b> · P-0007</td><td class="n">468</td><td class="n">281</td><td class="n">0</td><td class="n">187</td><td class="n"><span class="tag g">✓ 468 = 281 + 0 + 187</span></td></tr>
+              <tr><td><b>B-0091</b> · P-0011</td><td class="n">352</td><td class="n">211</td><td class="n">35</td><td class="n">106</td><td class="n"><span class="tag g">✓ 352 = 211 + 35 + 106</span></td></tr>
+              <tr><td><b>B-0058</b> · P-0015</td><td class="n">320</td><td class="n">245</td><td class="n">10</td><td class="n">60</td><td class="n"><b style="color:var(--red)">✗</b> <span class="tag r">告警 · 差异 +5 t</span></td></tr>
+              <tr><td><b>合计</b></td><td class="n"><b>1,140</b></td><td class="n"><b>737</b></td><td class="n"><b>45</b></td><td class="n"><b>353</b></td><td class="n"><b style="color:var(--red)">✗ 差异 +5 t</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="fig-cap">B-0058 差异 5 t 已立案（工单 OPS-2214），相关分配台账已自动冻结；B-0127 中已分配 281 t = 战投 60% + SPV-07 30% 口径的分配明细见基金门户。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> DOUBLE COUNT ALERTS</div>
+            <h2 class="sec-title">双重计算告警面板</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>时间</th><th>告警</th><th>处置</th><th class="n">状态</th></tr></thead>
+                <tbody>
+                  <tr><td class="n mono">10-28 09:14</td><td><b>同吨重复分配尝试</b><br>战投与 SPV-07 同时请求 B-0127 的 12 t 权益</td><td>拦截 · 仅保留先到请求，第二个请求进入人工复核</td><td class="n"><span class="tag r">已拦截</span></td></tr>
+                  <tr><td class="n mono">10-28 02:40</td><td><b>跨台账不一致</b><br>基金台账与项目台账对 B-0058 留存量差 5 t</td><td>待处理 · 已冻结 B-0058 分配操作</td><td class="n"><span class="tag a">待处理</span></td></tr>
+                  <tr><td class="n mono">10-27 22:05</td><td><b>登记簿 API 超时</b><br>注销指令提交后 30s 无回执</td><td>重试中 · 指数退避，最多 5 次</td><td class="n"><span class="tag b">重试中</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> DISPUTE TICKETS</div>
+            <h2 class="sec-title">争议工单</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>工单</th><th>类型</th><th class="n">SLA</th><th>处理人</th><th class="n">状态</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">OPS-2209</td><td><b>权益分配争议</b><br>SPV-07 投资人对 30% 归属比例提出异议</td><td class="n">72h</td><td>运营 · 张敏</td><td class="n"><span class="tag a">处理中</span></td></tr>
+                  <tr><td class="mono">OPS-2211</td><td><b>注销异议</b><br>战投主张 B-0091 已注销 35 t 的时点记录</td><td class="n">48h</td><td>合规 · 李川</td><td class="n"><span class="tag">调查中</span></td></tr>
+                  <tr><td class="mono">OPS-2214</td><td><b>数据缺陷</b><br>B-0058 留存量差 5 t（本日对账告警）</td><td class="n">24h</td><td>运营 · 王磊</td><td class="n"><span class="tag r">已升级</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> HANDLING FLOW</div>
+        <h2 class="sec-title">处置流程</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="step-n r">01</div><div class="step-body"><h4>告警触发<span class="who">Alert</span></h4><p>对账不等式破坏或重复计算尝试被识别，立即生成告警事件。</p></div></div>
+        <div class="step"><div class="step-n">02</div><div class="step-body"><h4>自动冻结相关台账<span class="who">Freeze</span></h4><p>涉事批次的分配与注销操作即时冻结，避免差异扩大。</p></div></div>
+        <div class="step"><div class="step-n">03</div><div class="step-body"><h4>运营裁决<span class="who">Adjudication</span></h4><p>运营按事件证据链裁决归属，重大事项升级合规委员会。</p></div></div>
+        <div class="step"><div class="step-n">04</div><div class="step-body"><h4>回写<span class="who">Write-back</span></h4><p>裁决结果回写双侧台账，重跑守恒校验直至全部 ✓。</p></div></div>
+        <div class="step"><div class="step-n g">05</div><div class="step-body"><h4>审计留痕<span class="who">Audit</span></h4><p>告警、冻结、裁决、回写全过程不可篡改留痕，供 LP 与外部审计调阅。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="../architecture.html#data"><span class="pn-l">平台层文档</span><span class="pn-t">← 守恒约束定义</span></a>
+      <a class="next" href="compliance.html"><span class="pn-l">上一页</span><span class="pn-t">← 合规配置器</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

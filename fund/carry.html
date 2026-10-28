@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>carry 瀑布 · 基金管理门户 — ZCC Platform</title>
+<meta name="description" content="carry 分配瀑布：双口径定义、返还本金—优先回报—catch-up—80/20 的四级顺序与示例计算。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="fund" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P4 · 基金管理门户 / carry 瀑布</div>
+        <h1 class="display">先还本金，再谈 <span class="grad">8% 门槛与 80/20</span></h1>
+        <p class="lede">carry 按四级瀑布顺序分配；股权收益与碳权益收益适用哪条口径，以基金合同预先定义为准，系统支持配置。</p>
+        <div class="pill-row">
+          <a class="pill" href="overview.html"><i class="dot"></i>AUM 与投资组合</a>
+          <a class="pill" href="capital-call.html"><i class="dot"></i>资本调用与 NAV</a>
+          <a class="pill" href="carry.html"><i class="dot"></i>carry 瀑布</a>
+          <a class="pill" href="exit.html"><i class="dot"></i>退出管理</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> DEFINITIONS</div>
+        <h2 class="sec-title">双口径切换说明</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card reveal">
+          <div class="card-ico">A</div>
+          <h3>口径 A · carry 只含股权收益</h3>
+          <p>GP carry 仅对股权退出收益计提；碳权益收益全额归属 LP（按实缴比例），不进入瀑布。适合碳收益定位为"附加分配"的基金结构。</p>
+        </div>
+        <div class="card reveal" data-delay="80">
+          <div class="card-ico v">B</div>
+          <h3>口径 B · 含已实现碳权益收益</h3>
+          <p>已实现碳权益收益（销售净额或分配折算）并入可分配收益，统一走瀑布。适合碳权益为重要收益来源的结构，GP 与 LP 共担共享。</p>
+        </div>
+      </div>
+      <div class="note warn reveal" style="margin-top:16px">
+        <span class="lab">CONTRACT</span>
+        <span>口径选择<b>以基金合同预先定义为准</b>，存续期内不得单方切换；系统支持按基金实例配置口径与参数，所有计算过程留审计日志。</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> WATERFALL ORDER</div>
+            <h2 class="sec-title">瀑布顺序（四级）</h2>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-n">01</div><div class="step-body"><h4>返还全部实缴本金<span class="who">LP 100%</span></h4><p>退出对价首先按实缴比例返还全部 LP 实缴资本，示例基金合计 ¥120m。</p></div></div>
+            <div class="step"><div class="step-n">02</div><div class="step-body"><h4>LP 优先回报 hurdle 8%<span class="who">LP 100%</span></h4><p>本金返还后，LP 按年化 8%（单利）优先获得门槛收益。</p></div></div>
+            <div class="step"><div class="step-n">03</div><div class="step-body"><h4>GP catch-up<span class="who">GP 100%</span></h4><p>GP 追补分配，直到 GP 累计取得 hurdle + catch-up 合计利润的 20%。</p></div></div>
+            <div class="step"><div class="step-n">04</div><div class="step-body"><h4>剩余 80 / 20 分配<span class="who">LP / GP</span></h4><p>剩余可分配收益按 LP 80%、GP 20% 分配，直至分配完毕。</p></div></div>
+          </div>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> WORKED EXAMPLE</div>
+            <h2 class="sec-title">示例：退出总额 ¥180m 逐级分配</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>层级</th><th>对象</th><th class="n">本次分配</th><th class="n">累计</th></tr></thead>
+                <tbody>
+                  <tr><td><b>L1</b> 返还本金</td><td>LP</td><td class="n">¥120.0m</td><td class="n">¥120.0m</td></tr>
+                  <tr><td><b>L2</b> hurdle 8%</td><td>LP</td><td class="n">¥9.6m</td><td class="n">¥129.6m</td></tr>
+                  <tr><td><b>L3</b> GP catch-up</td><td>GP</td><td class="n">¥2.4m</td><td class="n">¥132.0m</td></tr>
+                  <tr><td><b>L4a</b> 剩余 80%</td><td>LP</td><td class="n">¥38.4m</td><td class="n">¥170.4m</td></tr>
+                  <tr><td><b>L4b</b> 剩余 20%</td><td>GP</td><td class="n">¥9.6m</td><td class="n">¥180.0m</td></tr>
+                  <tr><td colspan="2"><b>合计（校验 = ¥180m）</b></td><td class="n"><b>¥180.0m ✓</b></td><td class="n"><b>LP ¥168.0m · GP ¥12.0m</b></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">利润 ¥60m：LP 得 48.0（80%）+ 9.6（hurdle）= 57.6，GP 得 12.0 = 20%，catch-up 校验通过。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> CARBON CONVERSION</div>
+        <h2 class="sec-title">碳权益收益折算规则</h2>
+      </div>
+      <div class="note reveal">
+        <span class="lab">RULE</span>
+        <span>若采用口径 B，碳权益收益的折算规则必须<b>二选一写入合同</b>：① 按<b>销售净额</b>（成交价减交易税费）确认；② 按<b>分配时点公允价</b>（第三方报价或登记簿参考价）折算。折算基准一经选定，同一批次内不得混用；未实现的碳权益存量仅做披露，不计入 carry。</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="capital-call.html"><span class="pn-l">上一页</span><span class="pn-t">← 资本调用与 NAV</span></a>
+      <a class="next" href="exit.html"><span class="pn-l">下一步</span><span class="pn-t">退出管理 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>

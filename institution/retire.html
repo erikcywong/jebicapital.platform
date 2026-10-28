@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>注销指令 · 机构企业门户 — ZCC Platform</title>
+<meta name="description" content="机构注销指令：六步执行流程、指令表单、用途声明枚举、不可逆警示与注销证书字段预览。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="institution" data-base="../">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">P3 · 机构企业门户 / 注销指令</div>
+        <h1 class="display">注销是唯一出口，<span class="grad">也是不可逆的一步</span></h1>
+        <p class="lede">机构将持有的碳信用在登记簿永久注销以支撑抵消或移除声明；流程示例以 <strong>宏原贸易</strong> 注销 P-0007 批次吨数为背景。</p>
+        <div class="pill-row">
+          <a class="pill" href="dataroom.html"><i class="dot"></i>机构数据室</a>
+          <a class="pill" href="ledger.html"><i class="dot"></i>碳权益台账</a>
+          <a class="pill" href="contracts.html"><i class="dot"></i>远期合同管理</a>
+          <a class="pill" href="disclosure.html"><i class="dot"></i>披露支持包</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> RETIRE FLOW</div>
+        <h2 class="sec-title">注销六步</h2>
+        <p class="sec-sub">示例指令当前停在第二步"权益归属校验"，后续步骤在其通过后自动推进。</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="step-n">1</div><div class="step-body"><h4>提交指令<span class="who">机构端</span></h4><p>选择批次、吨数与用途声明，提交后指令进入平台审核队列。</p></div></div>
+        <div class="step"><div class="step-n a">2</div><div class="step-body"><h4>权益归属校验<span class="who">当前停留</span></h4><p>平台核验台账：指令吨数是否小于等于机构在该批次下"可分配"的合同权益。</p></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-body"><h4>双重计算校验</h4><p>与登记簿、其他平台比对同一批次同一 vintage，防止同一吨数被重复声明或注销。</p></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-body"><h4>登记簿 API 执行</h4><p>校验通过后调用 Verra / GS 登记簿接口，将对应吨数转入注销账户。</p></div></div>
+        <div class="step"><div class="step-n">5</div><div class="step-body"><h4>注销证书生成</h4><p>登记簿返回交易 ID，平台生成带时间戳的注销证书并归档到数据室 03 碳核证夹。</p></div></div>
+        <div class="step"><div class="step-n g">6</div><div class="step-body"><h4>回写披露台账</h4><p>注销结果回写机构披露支持包，供 2026 披露季直接引用。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>02</b> INSTRUCTION FORM</div>
+            <h2 class="sec-title">指令表单（Mock）</h2>
+          </div>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th>字段</th><th>示例取值</th></tr></thead>
+                <tbody>
+                  <tr><td><b>批次选择</b></td><td class="mono">B-0091（vintage 2025 · GS · 可分配 165 t）</td></tr>
+                  <tr><td><b>注销吨数</b></td><td class="n"><b>220</b> tCO2e（不得超过可分配余额）</td></tr>
+                  <tr><td><b>用途声明</b></td><td>范围三抵消 / 移除声明 / 企业自愿注销 / 客户履约（枚举四选一）</td></tr>
+                  <tr><td><b>受益人具名</b></td><td>可选项：为宏原贸易集团具名，或指定子公司主体</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">示例：宏原贸易 2026 披露季计划注销 220 t，来源为 B-0091 与 B-0127 签发后吨数组合。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="sec-head" style="margin-bottom:18px">
+            <div class="sec-num"><b>03</b> CERTIFICATE FIELDS</div>
+            <h2 class="sec-title">注销证书字段预览</h2>
+          </div>
+          <div class="code">注销证书 · RETIREMENT CERTIFICATE
+<span class="k">项目名称</span>    云南保山咖啡鲜果加工厂（P-0007）
+<span class="k">Vintage</span>     2025
+<span class="k">吨数</span>        165 tCO2e
+<span class="k">标准</span>        Gold Standard（GS）
+<span class="k">注销目的</span>    范围三抵消
+<span class="k">受益人</span>      宏原贸易（具名）
+<span class="k">登记簿交易 ID</span> GS-RET-2026-00417
+<span class="k">时间戳</span>      2026-11-20T09:00+08:00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="note bad reveal">
+        <div class="lab">不可逆警示</div>
+        <div><strong style="color:#f4212e">注销在登记簿执行后不可撤销，平台台账锁定不可编辑。</strong>执行前强制通过双重计算校验；请在提交前确认批次、吨数、用途与受益人均无误。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="contracts.html"><span class="pn-l">上一步</span><span class="pn-t">← 远期合同管理</span></a>
+      <a class="next" href="disclosure.html"><span class="pn-l">下一步</span><span class="pn-t">披露支持包 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="../assets/js/nav.js"></script>
+</body>
+</html>
