@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>门户矩阵 — ZCC Platform</title>
+<meta name="description" content="ZCC Platform 六类门户：项目方、社区投资者、机构与企业、基金管理、MRV 核证方、平台运营后台。共享统一身份与数据中台。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="portals">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Portals · 门户矩阵</div>
+        <h1 class="display">六个门户，一套身份</h1>
+        <p class="lede">门户不是六个网站，是同一个数据底座的<strong>六种视角</strong>。用户只登录一次，权限决定他看到哪个世界；同一个项目在不同门户里是同一行记录，只是字段可见范围不同。</p>
+        <div class="pill-row">
+          <span class="pill"><i class="dot"></i>共享身份 SSO</span>
+          <span class="pill"><i class="dot"></i>项目级数据隔离</span>
+          <span class="pill"><i class="dot"></i>角色决定字段</span>
+          <span class="pill"><i class="dot"></i>审计全留痕</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 矩阵总览 ============ -->
+  <section class="section" style="padding-top:26px">
+    <div class="wrap">
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead>
+              <tr><th style="width:15%">门户</th><th style="width:16%">核心用户</th><th style="width:24%">首要任务</th><th style="width:26%">首屏必须回答的问题</th><th>北极星指标</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>项目方</b><div class="tag" style="margin-top:6px">Project</div></td>
+                <td>农户合作社、烘焙品牌、加工厂</td>
+                <td>把项目变成可融资、可测量的资产</td>
+                <td>我的项目现在卡在哪一步？下一步要我做什么？</td>
+                <td>孵化完成度 %</td>
+              </tr>
+              <tr>
+                <td><b>社区投资者</b><div class="tag" style="margin-top:6px">Retail</div></td>
+                <td>普通投资者、品牌粉丝</td>
+                <td>发现项目、小额认购、跟踪权益</td>
+                <td>我的钱在哪一笔、什么状态、我拿到了什么？</td>
+                <td>认购转化率 %</td>
+              </tr>
+              <tr>
+                <td><b>机构 / 企业</b><div class="tag" style="margin-top:6px">Institution</div></td>
+                <td>企业战投、基金 LP、碳买家</td>
+                <td>尽调、认购、碳权益台账与注销</td>
+                <td>我持有的碳权益多少吨？哪些已注销、能否用于披露？</td>
+                <td>已注销吨数 tCO₂e</td>
+              </tr>
+              <tr>
+                <td><b>基金管理</b><div class="tag" style="margin-top:6px">Fund</div></td>
+                <td>Jebi Capital 团队</td>
+                <td>管基金、管 SPV、管退出与分配</td>
+                <td>AUM 多少、待出资多少、carry 怎么算、哪个项目该退？</td>
+                <td>净 IRR / DPI</td>
+              </tr>
+              <tr>
+                <td><b>MRV / 核证方</b><div class="tag" style="margin-top:6px">Verifier</div></td>
+                <td>第三方核证机构、审计</td>
+                <td>接收核证任务、审数据、签发报告</td>
+                <td>有哪些待审任务、逾期几个、证据是否齐全？</td>
+                <td>核证周期（天）</td>
+              </tr>
+              <tr>
+                <td><b>平台运营后台</b><div class="tag" style="margin-top:6px">Admin</div></td>
+                <td>平台管理员</td>
+                <td>项目审核、费率、争议、报表</td>
+                <td>今天有哪些风险信号需要我处理？</td>
+                <td>双重计算告警 = 0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 逐门户 ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> PORTAL BY PORTAL</div>
+        <h2 class="sec-title">每个门户的功能清单</h2>
+        <p class="sec-sub">以下是最小可用功能集（MVP+）。标注 <span class="tag b">写</span> 的模块会产生新的数据记录，标注 <span class="tag">读</span> 的只是视图。</p>
+      </div>
+
+      <div class="grid g2">
+
+        <!-- 项目方 -->
+        <div class="card card-tall reveal">
+          <div id="p-project" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="card-ico" style="margin:0">P1</div>
+            <div><h3 style="margin:0">项目方门户</h3><div style="font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.08em">PROJECT OWNER</div></div>
+          </div>
+          <ul class="ul">
+            <li><b>项目仪表盘</b> — 孵化完成度环、待办清单、融资进度、核证状态</li>
+            <li><b>项目注册与诊断</b> — 6 步表单：主体信息 → 产业链环节 → 碳项目类型 → 基线数据 → 融资计划 → 提交审核 <span class="tag b">写</span></li>
+            <li><b>碳基线录入</b> — 结构化表单 + Excel 模板导入；内置因子库自动匹配，缺失项标红 <span class="tag b">写</span></li>
+            <li><b>融资材料管理</b> — BP、财务模型、供应链合同、土地/水权证明，版本化上传</li>
+            <li><b>MRV 任务</b> — 监测期任务日历、数据上传、IoT 设备绑定、核证方反馈回复 <span class="tag b">写</span></li>
+            <li><b>投资人关系</b> — 谁看过项目、谁预约了、问答区、更新推送</li>
+          </ul>
+          <div class="note" style="margin-top:14px"><div class="lab">设计要点</div><div>农户端必须能在<strong>手机 + 弱网</strong>下完成基线录入：分步保存、离线草稿、图片压缩上传。</div></div>
+        </div>
+
+        <!-- 社区 -->
+        <div class="card card-tall reveal" data-delay="70">
+          <div id="p-retail" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="card-ico">P2</div>
+            <div><h3 style="margin:0">社区投资者门户</h3><div style="font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.08em">RETAIL INVESTOR</div></div>
+          </div>
+          <ul class="ul">
+            <li><b>项目发现</b> — 按产业链环节 / 地区 / 阶段 / 是否有碳权益筛选，卡片带减排潜力评分</li>
+            <li><b>发行页</b> — 故事、目标、用途、股权结构、碳权益说明、<b>强制风险披露区</b>（不可折叠）</li>
+            <li><b>认购流程</b> — 金额输入 → 合规问卷 → 电子签 → 托管付款 → 状态跟踪 <span class="tag b">写</span></li>
+            <li><b>我的投资</b> — 已确认 / 待处理 / 已取消三栏；每条含金额、份额、合同 PDF、碳权益占比</li>
+            <li><b>碳权益查看</b> — 我在这个项目上对应的年度碳权益吨数（含 SPV 穿透比例，只读）</li>
+            <li><b>通知中心</b> — 交割、核证签发、可分配、退出等关键节点推送</li>
+          </ul>
+          <div class="note warn" style="margin-top:14px"><div class="lab">设计要点</div><div>碳权益必须显示为「<b>合同权利</b>」，而不是「你拥有 X 吨碳信用」。措辞决定证券属性判断。</div></div>
+        </div>
+
+        <!-- 机构 -->
+        <div class="card card-tall reveal" data-delay="140">
+          <div id="p-inst" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="card-ico a">P3</div>
+            <div><h3 style="margin:0">机构 / 企业门户</h3><div style="font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.08em">INSTITUTION &amp; CORPORATE</div></div>
+          </div>
+          <ul class="ul a">
+            <li><b>数据室</b> — 文件夹级权限：尽调材料、核证报告、财务模型、供应链合同；水印 + 下载日志</li>
+            <li><b>SPV / 基金认购</b> — 认购文件包、KYC、电签、出资进度 <span class="tag b">写</span></li>
+            <li><b>碳权益台账</b> — 按项目 / vintage / 标准 / 状态筛选；导出 CSV 与 PDF <span class="tag">读</span></li>
+            <li><b>远期合同管理</b> — 已签意向、条款清单、交付计划、违约条款提醒</li>
+            <li><b>注销指令</b> — 选择吨数 → 用途声明 → 受益人具名/匿名 → 双重计算校验 → 提交 <span class="tag b">写</span></li>
+            <li><b>披露支持包</b> — 一键生成年度碳权益报表（范围三 / 抵消 / 移除分类字段）</li>
+          </ul>
+          <div class="note" style="margin-top:14px"><div class="lab">设计要点</div><div>机构用户不逛网站，他们<strong>只来查数</strong>。默认落地页是台账，不是首页。</div></div>
+        </div>
+
+        <!-- 基金 -->
+        <div class="card card-tall reveal" data-delay="210">
+          <div id="p-fund" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="card-ico v">P4</div>
+            <div><h3 style="margin:0">基金管理门户</h3><div style="font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.08em">FUND MANAGER</div></div>
+          </div>
+          <ul class="ul">
+            <li><b>AUM 总览</b> — 已投 / 未投 / 承诺未到账，按基金与 SPV 分列</li>
+            <li><b>投资组合</b> — 项目级持股比例、估值、股权 + 碳权益双栏</li>
+            <li><b>资本调用</b> — 生成 call notice、按 LP 份额分摊、到期追踪 <span class="tag b">写</span></li>
+            <li><b>NAV 估算</b> — 季度估值表、方法说明、LP 报表批量生成</li>
+            <li><b>carry 瀑布</b> — 两种口径：仅股权收益 / 含碳权益收益；分配顺序可配置</li>
+            <li><b>退出管理</b> — 退出事件登记、对价拆分、分配执行 <span class="tag b">写</span></li>
+          </ul>
+          <div class="note" style="margin-top:14px"><div class="lab">设计要点</div><div>carry 口径必须在基金合同里先定义，系统只做<b>可配置执行</b>，不做默认假设。</div></div>
+        </div>
+
+        <!-- MRV -->
+        <div class="card card-tall reveal">
+          <div id="p-verifier" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="card-ico g">P5</div>
+            <div><h3 style="margin:0">MRV / 核证方门户</h3><div style="font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.08em">VERIFIER</div></div>
+          </div>
+          <ul class="ul g">
+            <li><b>任务队列</b> — 待接单 / 审核中 / 待签发 / 已驳回，按截止日排序</li>
+            <li><b>数据审核台</b> — 监测报告 + 原始凭证 + IoT 时序并列对照，逐项标注</li>
+            <li><b>核证报告</b> — 结构化表单 + PDF 上传，签发量填写即触发守恒校验 <span class="tag b">写</span></li>
+            <li><b>驳回与整改</b> — 问题清单回传项目方，形成整改闭环</li>
+            <li><b>历史记录</b> — 我签发过的所有批次与登记簿状态</li>
+          </ul>
+          <div class="note" style="margin-top:14px"><div class="lab">设计要点</div><div>核证方<b>不能看到</b>项目的融资金额与股权结构——避免核证独立性问题。权限按字段裁剪。</div></div>
+        </div>
+
+        <!-- Admin -->
+        <div class="card card-tall reveal" data-delay="70">
+          <div id="p-admin" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div class="card-ico r">P6</div>
+            <div><h3 style="margin:0">平台运营后台</h3><div style="font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.08em">PLATFORM ADMIN</div></div>
+          </div>
+          <ul class="ul r">
+            <li><b>项目审核</b> — 入驻审核、材料完整性检查、上/下架</li>
+            <li><b>费率配置</b> — 平台服务费、核证费、托管费、碳权益服务费</li>
+            <li><b>合规工作流</b> — 发行豁免配置、KYC 等级、审批流设计器</li>
+            <li><b>争议处理</b> — 工单、证据链、处理结论留痕</li>
+            <li><b>风险看板</b> — 守恒告警、核证驳回率、注销差错、逾期任务</li>
+            <li><b>报表中心</b> — 项目供给、资本栈、碳权益、风险四组指标导出</li>
+          </ul>
+          <div class="note bad" style="margin-top:14px"><div class="lab">设计要点</div><div>管理员<b>不得</b>直接修改已签发的吨数或已注销记录。所有更正走「红冲 + 重开」双记录流程。</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 权限矩阵 ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> ACCESS MATRIX</div>
+        <h2 class="sec-title">权限矩阵：谁能写、谁能读、谁不能看</h2>
+        <p class="sec-sub"><span style="color:var(--accent)">●</span> 完整操作　<span style="color:var(--txt-2)">○</span> 只读　<span style="color:var(--muted)">—</span> 不可见。行级隔离在数据库实现，前端隐藏不作为安全手段。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:24%">能力</th>
+                <th class="n">项目方</th><th class="n">社区</th><th class="n">机构</th><th class="n">基金</th><th class="n">核证方</th><th class="n">Admin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>创建 / 编辑项目</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--txt-2)">○</td></tr>
+              <tr><td>录入碳基线</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--txt-2)">○</td></tr>
+              <tr><td>查看核证原始数据</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--green)">●</td><td class="n" style="color:var(--txt-2)">○</td></tr>
+              <tr><td>签发核证量</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--green)">●</td><td class="n" style="color:var(--muted)">—</td></tr>
+              <tr><td>查看融资金额 / 股权结构</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--accent)">●</td></tr>
+              <tr><td>认购（社区轮）</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td></tr>
+              <tr><td>机构数据室访问</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--txt-2)">○</td></tr>
+              <tr><td>碳权益分配</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--green)">●</td></tr>
+              <tr><td>下达注销指令</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--accent)">●</td><td class="n" style="color:var(--txt-2)">○</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--txt-2)">○</td></tr>
+              <tr><td>修改已签发 / 已注销记录</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--red)">红冲</td></tr>
+              <tr><td>费率 / 工作流配置</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--muted)">—</td><td class="n" style="color:var(--accent)">●</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note warn" style="margin-top:16px">
+        <div class="lab">关键设计</div>
+        <div>核证方看不到融资信息，机构看不到其他机构的持仓，项目方看不到其他项目的碳权益分配——<strong>三种「互盲」共同构成独立性基础</strong>。任何一次越权访问都要在生产日志里可查。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 共享中台 ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> SHARED CORE</div>
+        <h2 class="sec-title">六种视角，四条共享规则</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card reveal"><div class="card-ico">R1</div><h3>同一身份</h3><p>一个自然人/机构一个 identity_id，可同时是社区投资者与机构 LP；不同角色挂不同 KYC 等级，不重复开户。</p></div>
+        <div class="card reveal" data-delay="60"><div class="card-ico">R2</div><h3>同一项目</h3><p>项目只有一个 project_id。门户之间不复制数据，只做视图投影；项目改名，六个门户同时改。</p></div>
+        <div class="card reveal" data-delay="120"><div class="card-ico g">R3</div><h3>同一数字</h3><p>碳吨数、金额、份额只有一个来源（业务表 + 事件流）。报表不做二次计算，避免同数不同源。</p></div>
+        <div class="card reveal" data-delay="180"><div class="card-ico a">R4</div><h3>同一措辞</h3><p>「碳权益」不叫「碳资产」，「认购」不叫「购买」。术语字典统一维护，前端文案从字典取，禁止硬编码。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="architecture.html"><span class="pn-l">上一章</span><span class="pn-t">← 平台架构</span></a>
+      <a class="next" href="carbon.html"><span class="pn-l">下一章</span><span class="pn-t">碳权益层 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

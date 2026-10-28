@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>碳权益层 — ZCC Platform</title>
+<meta name="description" content="碳资产台账、MRV 状态机、双重计算防火墙、碳权益合同、注销流程与企业披露支持包。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="carbon">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Layer 04 · 碳权益层</div>
+        <h1 class="display">让减排量变成<span class="grad">可分配、可审计、不可重复计算</span>的合同权利</h1>
+        <p class="lede">这一层同时服务两件事：投资企业拿到可用于披露的碳权益，基金拿到碳收益。但它必须守住一条底线——<strong>碳权益是投资协议的附属合同权利，不是可自由转让的证券，也不是「买了碳」。</strong></p>
+        <div class="pill-row">
+          <a class="pill" href="#ledger"><i class="dot"></i>碳资产台账</a>
+          <a class="pill" href="#mrv"><i class="dot"></i>MRV 状态机</a>
+          <a class="pill" href="#contract"><i class="dot"></i>权益合同</a>
+          <a class="pill" href="#firewall"><i class="dot"></i>双重计算防火墙</a>
+          <a class="pill" href="#retire"><i class="dot"></i>注销与披露</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDGER ============ -->
+  <section class="section" id="ledger">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> CARBON LEDGER</div>
+        <h2 class="sec-title">碳资产档案：平台是注册处的「聚合视图」，不是注册处</h2>
+        <p class="sec-sub">法定所有权永远在登记簿上。平台台账记录的是<strong>谁有权向谁主张多少吨</strong>——两者分离，但必须随时能对上。</p>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th style="width:34%">档案字段</th><th style="width:36%">含义</th><th>来源</th></tr></thead>
+                <tbody>
+                  <tr><td><b>project_id</b></td><td>绑定唯一项目主键</td><td class="mono">平台</td></tr>
+                  <tr><td><b>methodology</b></td><td>方法学与版本（如 AMS-I.F / VM0042）</td><td>项目方 + 核证方</td></tr>
+                  <tr><td><b>baseline</b></td><td>基线情景与基线排放量</td><td>项目方<br><span style="font-size:11px;color:var(--muted)">核证后锁定</span></td></tr>
+                  <tr><td><b>monitoring_period</b></td><td>监测期起止、报告周期</td><td>项目方</td></tr>
+                  <tr><td><b>estimated_removal</b></td><td>预计减排/移除量（tCO₂e/年）</td><td>预评估模型</td></tr>
+                  <tr><td><b>verification_status</b></td><td>未核证 / 审核中 / 已签发 / 已驳回</td><td>MRV 引擎</td></tr>
+                  <tr><td><b>registry / registry_id</b></td><td>登记簿名称与登记号</td><td>Registry API</td></tr>
+                  <tr><td><b>vintage</b></td><td>减排量产生年份</td><td>核证批次</td></tr>
+                  <tr><td><b>buffer_pct</b></td><td>缓冲池扣减比例（移除类项目）</td><td>标准规则</td></tr>
+                  <tr><td><b>sdg_tags</b></td><td>附带可持续发展目标标签</td><td>项目方</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">CarbonProfile 与 Project 为 1:1。档案一旦进入核证，基线字段只读。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="grid" style="gap:10px">
+            <div class="card" style="padding:18px">
+              <h3 style="color:var(--accent)">登记簿层（法定）</h3>
+              <p>Verra / Gold Standard / Puro.earth 持有项目登记、签发、转移、注销的<b>最终事实</b>。平台通过 API 只读拉取，并订阅状态变更。</p>
+              <div class="tag-row"><span class="tag b">RegistryPort 适配器</span><span class="tag">Webhook + 定时对账</span></div>
+            </div>
+            <div class="card" style="padding:18px">
+              <h3 style="color:var(--green)">平台台账层（合同）</h3>
+              <p>记录「谁有权获得多少吨、什么类型、什么 vintage、什么优先权」。这是<b>内部权益账</b>，可以与登记簿持有人不同名。</p>
+              <div class="tag-row"><span class="tag g">CarbonEntitlement</span><span class="tag">用途排他标记</span></div>
+            </div>
+            <div class="note warn">
+              <div class="lab">对账规则</div>
+              <div>每日自动比对：<b>登记簿余额 ≥ 台账未注销余额 + 待分配余额</b>。出现缺口立即冻结该项目的分配与注销功能，转人工核查。</div>
+            </div>
+            <div class="note">
+              <div class="lab">为什么不做注册处</div>
+              <div>做注册处意味着承担登记、防重复、争议裁决责任，并需取得相应资质。<b>做聚合视图，风险边界清晰得多。</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MRV ============ -->
+  <section class="section" id="mrv">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> MRV ENGINE</div>
+        <h2 class="sec-title">MRV 状态机：七步，每一步都有唯一责任人</h2>
+        <p class="sec-sub">数字 MRV 的四个核心组件——项目注册、验证、核证、影响追踪——在这里落成一条带状态、带权限、带证据链的流水线。</p>
+      </div>
+
+      <div class="figure reveal">
+        <svg viewBox="0 0 900 128" role="img" aria-label="MRV 七步状态机">
+          <defs>
+            <marker id="a2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="#3d454e"/>
+            </marker>
+          </defs>
+          <g font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+            <!-- node 1 -->
+            <rect x="4" y="34" width="112" height="56" rx="9" fill="#0b0f14" stroke="#242a31"/>
+            <text x="60" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">① 数据录入</text>
+            <text x="60" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">IoT / 手工 / API</text>
+            <text x="60" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">owner</text>
+            <!-- node 2 -->
+            <rect x="130" y="34" width="112" height="56" rx="9" fill="#0b0f14" stroke="#242a31"/>
+            <text x="186" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">② 监测报告</text>
+            <text x="186" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">系统生成</text>
+            <text x="186" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">platform</text>
+            <!-- node 3 -->
+            <rect x="256" y="34" width="112" height="56" rx="9" fill="#0b0f14" stroke="#1d9bf0" stroke-opacity=".45"/>
+            <text x="312" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">③ 核证审核</text>
+            <text x="312" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">证据 + 现场</text>
+            <text x="312" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">verifier</text>
+            <!-- node 4 -->
+            <rect x="382" y="34" width="112" height="56" rx="9" fill="#0b0f14" stroke="#1d9bf0" stroke-opacity=".45"/>
+            <text x="438" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">④ 报告签发</text>
+            <text x="438" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">签发量 + PDF</text>
+            <text x="438" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">verifier</text>
+            <!-- node 5 -->
+            <rect x="508" y="34" width="112" height="56" rx="9" fill="#08120f" stroke="#1c3a30"/>
+            <text x="564" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">⑤ 登记簿签发</text>
+            <text x="564" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">registry_id</text>
+            <text x="564" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">registry api</text>
+            <!-- node 6 -->
+            <rect x="634" y="34" width="112" height="56" rx="9" fill="#08120f" stroke="#1c3a30"/>
+            <text x="690" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">⑥ 权益分配</text>
+            <text x="690" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">合同比例计算</text>
+            <text x="690" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">platform</text>
+            <!-- node 7 -->
+            <rect x="760" y="34" width="136" height="56" rx="9" fill="#0b0f14" stroke="#ffd400" stroke-opacity=".35"/>
+            <text x="828" y="55" fill="#e7e9ea" font-size="11" font-weight="600" text-anchor="middle">⑦ 注销 / 出售</text>
+            <text x="828" y="72" fill="#71767b" font-size="8.5" text-anchor="middle" font-family="ui-monospace,monospace">用途排他锁定</text>
+            <text x="828" y="84" fill="#5a636c" font-size="8" text-anchor="middle" font-family="ui-monospace,monospace">enterprise / fund</text>
+          </g>
+          <g stroke="#3d454e" stroke-width="1" marker-end="url(#a2)">
+            <line x1="118" y1="62" x2="126" y2="62"/>
+            <line x1="244" y1="62" x2="252" y2="62"/>
+            <line x1="370" y1="62" x2="378" y2="62"/>
+            <line x1="496" y1="62" x2="504" y2="62"/>
+            <line x1="622" y1="62" x2="630" y2="62"/>
+            <line x1="748" y1="62" x2="756" y2="62"/>
+          </g>
+          <!-- reject loop -->
+          <path d="M312 90 V112 H186 V92" fill="none" stroke="#f4212e" stroke-opacity=".55" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#a2)"/>
+          <text x="250" y="124" fill="#f4212e" font-size="8.5" font-family="ui-monospace,monospace" opacity=".85">驳回 → 整改 → 重提</text>
+        </svg>
+        <div class="fig-cap">Fig.3 — 状态机不可跳步：没有核证报告就不能填签发量，没有 registry_id 就不能分配权益。</div>
+      </div>
+
+      <div class="split" style="margin-top:22px">
+        <div class="reveal">
+          <div class="steps">
+            <div class="step">
+              <div class="step-n">1</div>
+              <div class="step-body">
+                <h4>数据录入 <span class="who">项目方</span></h4>
+                <p>支持两条通道：小农户用结构化表单 + 照片凭证（手机端、离线草稿）；加工厂/仓储用 API 或 IoT 直连（电表、冷库温度、水表）。每条数据带时间戳、设备号、上传人。</p>
+                <div class="io"><span><b>输入</b> 活动数据 / 排放因子</span><span class="arr">→</span><span><b>落库</b> MonitoringRecord</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-body">
+                <h4>监测报告生成 <span class="who">系统</span></h4>
+                <p>按方法学模板自动汇总周期内数据，计算减排量，标记异常值与缺失项。报告为快照，生成后不可回改；数据更正走新版本。</p>
+                <div class="io"><span><b>输出</b> 监测报告 v1/v2…</span><span class="arr">→</span><span><b>校验</b> 完整性 / 异常值</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-body">
+                <h4>核证方审核 <span class="who">第三方</span></h4>
+                <p>核证方在独立门户接收任务，逐项比对报告、原始凭证与 IoT 时序。可提问、可驳回。所有批注留痕。<b>看不到项目的融资金额与股权结构。</b></p>
+                <div class="io"><span><b>输入</b> 监测报告 + 证据包</span><span class="arr">→</span><span><b>输出</b> 审核意见 / 驳回清单</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">4</div>
+              <div class="step-body">
+                <h4>核证报告签发 <span class="who">核证方</span></h4>
+                <p>填写核证量（tCO₂e）并签署。此动作即触发守恒校验：核证量进入 VerificationBatch 成为 locked 余额，平台内不可再编辑。</p>
+                <div class="io"><span><b>输出</b> 核证报告 PDF + issued_tons</span><span class="arr">→</span><span><b>校验</b> 守恒预检</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n g">5</div>
+              <div class="step-body">
+                <h4>登记簿签发 / 转移 <span class="who">Registry API</span></h4>
+                <p>通过适配器向 Verra / GS / Puro 申请签发或转移持有账户，回写 registry_id 与持有人。平台账本与登记簿账本的唯一强制同步点。</p>
+                <div class="io"><span><b>输出</b> registry_id / holder</span><span class="arr">→</span><span><b>校验</b> 余额对账</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n g">6</div>
+              <div class="step-body">
+                <h4>碳权益分配 <span class="who">平台 / Admin</span></h4>
+                <p>按 CarbonContract 的比例与优先顺序自动计算各受益人应得吨数，生成 CarbonEntitlement 记录并标记用途（scope3 / offset / resale / reserve）。</p>
+                <div class="io"><span><b>输入</b> 签发量 + 合同条款</span><span class="arr">→</span><span><b>输出</b> Entitlement 明细</span></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n a">7</div>
+              <div class="step-body">
+                <h4>注销或出售 <span class="who">企业 / 基金</span></h4>
+                <p>企业下达注销指令（用途 + 受益人具名），平台校验归属与排他标记后调用登记簿 API 执行；基金则按协议对外出售或结转。两者互斥。</p>
+                <div class="io"><span><b>输出</b> 注销证书 / 交易凭证</span><span class="arr">→</span><span><b>写入</b> 披露台账</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="grid" style="gap:10px">
+            <div class="card" style="padding:18px">
+              <h3>审计轨迹（append-only）</h3>
+              <p>每次状态跃迁写一条不可变审计记录：<span class="mono" style="font-family:var(--mono);font-size:11px;color:var(--accent)">who · when · what · before → after · evidence_hash</span>。任何人不得删除，只能追加。</p>
+            </div>
+            <div class="card" style="padding:18px">
+              <h3>双通道数据接入</h3>
+              <ul class="ul tight">
+                <li><b>手工</b> — 表单 + 图片/PDF 凭证，移动优先，弱网可保存草稿</li>
+                <li><b>API</b> — 加工厂 ERP、冷库温控、电表；按设备绑定项目与监测点</li>
+                <li><b>IoT</b> — MQTT 上行，按小时聚合，异常值不丢弃只标记</li>
+              </ul>
+            </div>
+            <div class="note bad">
+              <div class="lab">红线</div>
+              <div>核证方<b>不能</b>同时是项目方关联方；平台<b>不</b>代核证方签发。角色冲突检测写进入驻审核。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTRACT ============ -->
+  <section class="section" id="contract">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> ENTITLEMENT CONTRACTS</div>
+        <h2 class="sec-title">合同条款库：把「应该给多少吨」写成可计算字段</h2>
+        <p class="sec-sub">碳权益不是一句承诺，是一组参数。条款必须结构化——否则每次分配都要律师手工算一遍。</p>
+      </div>
+
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th style="width:20%">条款</th><th style="width:34%">作用</th><th style="width:22%">触发事件</th><th>系统行为</th></tr></thead>
+            <tbody>
+              <tr><td><b>分配比例</b></td><td>签发量在投资企业 / 基金 / 平台之间的拆分（如 60 / 35 / 5）</td><td>batch.verified</td><td>自动生成 Entitlement，比例之和必须 = 100%</td></tr>
+              <tr><td><b>优先购买权</b></td><td>企业有权在对外出售前按公式价优先购入</td><td>entitlement.available</td><td>生成 30 天选择窗口，逾期自动释放</td></tr>
+              <tr><td><b>远期采购价公式</b></td><td>以指数/固定价/区间形式约定未来交割价</td><td>delivery.due</td><td>按公式计算结算价，生成应付通知</td></tr>
+              <tr><td><b>回购 / 替换</b></td><td>核证被撤销或项目失败时的补偿安排</td><td>batch.reversed</td><td>冻结待分配余额，触发替换批次或退款流程</td></tr>
+              <tr><td><b>vintage 限制</b></td><td>限定可接受的减排量年份</td><td>分配计算</td><td>不符 vintage 的批次不进分配池</td></tr>
+              <tr><td><b>用途限制</b></td><td>约定只能用于注销，不得转售</td><td>retirement / resale</td><td>在 Entitlement 上写入不可变用途锁</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <div class="lab">计算示例</div>
+        <div>批次签发 <b>1,000 tCO₂e</b>，合同比例 企业 60% / 基金 35% / 平台 5% → 企业 600 t、基金 350 t、平台留存 50 t。企业当季注销 200 t，则：已分配 600、已注销 200、剩余权益 400。报表同时呈现三个数字，<b>不合并</b>。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FIREWALL ============ -->
+  <section class="section" id="firewall">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> ANTI-DOUBLE-COUNTING</div>
+        <h2 class="sec-title">双重计算防火墙：一吨只能去一个地方</h2>
+        <p class="sec-sub">最容易出事的场景不是黑客，是<strong>好心的重复使用</strong>——项目方把同一批碳既卖给企业做抵消，又计入自己的减排宣传。系统必须在数据层拦住它。</p>
+      </div>
+
+      <div class="figure reveal">
+        <svg viewBox="0 0 900 330" role="img" aria-label="双重计算防火墙：一吨减排量三条互斥去向">
+          <defs>
+            <marker id="a3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="#3d454e"/>
+            </marker>
+            <marker id="a3r" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="#f4212e"/>
+            </marker>
+          </defs>
+
+          <rect x="16" y="132" width="176" height="66" rx="10" fill="#0f1620" stroke="#1d9bf0" stroke-opacity=".55"/>
+          <text x="104" y="156" fill="#e7e9ea" font-size="14" font-weight="700" text-anchor="middle" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">1 tCO₂e</text>
+          <text x="104" y="174" fill="#7cc4ff" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">BATCH #B-0127 · 已签发</text>
+          <text x="104" y="188" fill="#71767b" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">locked = true</text>
+
+          <!-- gate -->
+          <rect x="236" y="104" width="136" height="122" rx="12" fill="#0b0f14" stroke="#8b5cf6" stroke-opacity=".6" stroke-dasharray="4 3"/>
+          <text x="304" y="128" fill="#a78bfa" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace" letter-spacing="1">EXCLUSIVITY GATE</text>
+          <text x="304" y="150" fill="#e7e9ea" font-size="11.5" text-anchor="middle" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">用途排他校验</text>
+          <text x="304" y="168" fill="#71767b" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">purpose ∈ {scope3,</text>
+          <text x="304" y="180" fill="#71767b" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">offset, resale, reserve}</text>
+          <text x="304" y="200" fill="#f4212e" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">only one allowed</text>
+
+          <g stroke="#3d454e" stroke-width="1.2" fill="none" marker-end="url(#a3)">
+            <path d="M192 165 H232"/>
+            <path d="M372 143 C400 143 404 58 434 58"/>
+            <path d="M372 165 H434"/>
+            <path d="M372 187 C400 187 404 272 434 272"/>
+          </g>
+
+          <!-- destination 1 -->
+          <rect x="438" y="30" width="254" height="56" rx="9" fill="#08120f" stroke="#1c3a30"/>
+          <text x="454" y="52" fill="#e7e9ea" font-size="12" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">企业范围三减排量</text>
+          <text x="454" y="70" fill="#71767b" font-size="9.5" font-family="ui-monospace,monospace">purpose = scope3 · 记入披露台帐</text>
+
+          <!-- destination 2 -->
+          <rect x="438" y="137" width="254" height="56" rx="9" fill="#08120f" stroke="#1c3a30"/>
+          <text x="454" y="159" fill="#e7e9ea" font-size="12" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">权益持有人注销</text>
+          <text x="454" y="177" fill="#71767b" font-size="9.5" font-family="ui-monospace,monospace">purpose = offset · 登记簿执行</text>
+
+          <!-- destination 3 -->
+          <rect x="438" y="244" width="254" height="56" rx="9" fill="#0b0f14" stroke="#3a3427"/>
+          <text x="454" y="266" fill="#e7e9ea" font-size="12" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">对外出售 / 结转</text>
+          <text x="454" y="284" fill="#71767b" font-size="9.5" font-family="ui-monospace,monospace">purpose = resale · 基金收益路径</text>
+
+          <!-- forbidden loop -->
+          <path d="M700 86 C760 110 760 132 700 140" fill="none" stroke="#f4212e" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#a3r)"/>
+          <circle cx="742" cy="113" r="9" fill="#160a0b" stroke="#f4212e" stroke-width="1.2"/>
+          <path d="M738.5 109.5 L745.5 116.5 M745.5 109.5 L738.5 116.5" stroke="#f4212e" stroke-width="1.3"/>
+          <text x="772" y="88" fill="#f4212e" font-size="8.5" font-family="ui-monospace,monospace">DOUBLE</text>
+          <text x="772" y="100" fill="#f4212e" font-size="8.5" font-family="ui-monospace,monospace">COUNTING</text>
+
+          <text x="438" y="322" fill="#5a636c" font-size="9" font-family="ui-monospace,monospace">改变用途需先红冲原记录，再新建记录；同一 batch 的三条路径永不同时成立</text>
+        </svg>
+        <div class="fig-cap">Fig.4 — 用途标记写在 Entitlement 上，不可为空、不可多值。这是全平台最重要的一个枚举字段。</div>
+      </div>
+
+      <div class="grid g3" style="margin-top:16px">
+        <div class="card reveal">
+          <div class="card-ico r">CHECK 1</div>
+          <h3>写入时校验</h3>
+          <p>分配、注销、转售三个接口共用同一把行级锁；事务内校验 batch 余额，失败即回滚。</p>
+        </div>
+        <div class="card reveal" data-delay="70">
+          <div class="card-ico r">CHECK 2</div>
+          <h3>跨年比对</h3>
+          <p>同一 vintage 的吨数在年末做「用途唯一性扫描」，发现同一吨出现在两条路径即冻结项目。</p>
+        </div>
+        <div class="card reveal" data-delay="140">
+          <div class="card-ico r">CHECK 3</div>
+          <h3>对外声明一致性</h3>
+          <p>项目方提交的品牌宣传减排声明需与台账对账；企业披露包内嵌「未重复主张」声明模板。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RETIRE ============ -->
+  <section class="section" id="retire">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>05</b> RETIREMENT &amp; DISCLOSURE</div>
+        <h2 class="sec-title">注销：不可逆的六步，和一份不承诺结论的报表</h2>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <div class="steps">
+            <div class="step"><div class="step-n">1</div><div class="step-body"><h4>发起注销指令</h4><p>企业选择项目 / 批次 / 吨数 / vintage，填写注销目的（自愿抵消、客户产品碳中和、合规履约）与受益人是否具名。</p></div></div>
+            <div class="step"><div class="step-n">2</div><div class="step-body"><h4>归属校验</h4><p>校验该 Entitlement 余额充足、未被用途锁定、未处于优先购买权窗口内。</p></div></div>
+            <div class="step"><div class="step-n">3</div><div class="step-body"><h4>双重计算校验</h4><p>确认这批吨数未计入任何一方的范围三或减排声明；若已计入，阻止并提示先撤销声明。</p></div></div>
+            <div class="step"><div class="step-n">4</div><div class="step-body"><h4>登记簿执行</h4><p>调用 Registry API 提交注销，注明注销目的与受益人。等待登记簿确认（异步）。</p></div></div>
+            <div class="step"><div class="step-n g">5</div><div class="step-body"><h4>台账锁定 + 证书生成</h4><p>确认回调后，台账余额永久扣减，生成注销证书（PDF + 唯一编号），记录写入 append-only 日志。</p></div></div>
+            <div class="step"><div class="step-n g">6</div><div class="step-body"><h4>回写披露台账</h4><p>注销量进入企业的年度碳权益台账，自动带入披露支持包的数据字段。</p></div></div>
+          </div>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="card" style="padding:20px">
+            <h3>注销证书字段</h3>
+            <ul class="ul tight g">
+              <li>项目名称与登记号</li>
+              <li>标准与方法学（Verra VCS / Gold Standard / Puro）</li>
+              <li>vintage、吨数、批次号</li>
+              <li>注销目的（beneficial use）</li>
+              <li>受益人名称（企业可选具名或匿名）</li>
+              <li>注销时间、登记簿交易号</li>
+              <li>证书唯一编号 + 验真链接/哈希</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:20px;margin-top:12px">
+            <h3>企业披露支持包（数据准备，非合规结论）</h3>
+            <ul class="ul tight">
+              <li><b>投资明细</b> — 项目、轮次、金额、持股比例</li>
+              <li><b>碳权益明细</b> — 获得吨数、已注销、未注销余额</li>
+              <li><b>分类字段</b> — 减排 vs 移除、vintage、标准、方法学</li>
+              <li><b>声明区</b> — 双重计算声明、未重复主张声明模板</li>
+              <li><b>导出</b> — CSV / XLSX / PDF，字段命名对齐主流披露框架</li>
+            </ul>
+            <div class="note warn" style="margin-top:14px"><div class="lab">免责</div><div>平台只提供数据与凭证，<b>不对任何披露框架下的合规性或鉴证结论负责</b>。此句必须出现在每份导出文件页脚。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="portals.html"><span class="pn-l">上一章</span><span class="pn-t">← 门户矩阵</span></a>
+      <a class="next" href="capital.html"><span class="pn-l">下一章</span><span class="pn-t">资本栈 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

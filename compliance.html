@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合规与风控 — ZCC Platform</title>
+<meta name="description" content="三实体隔离、证券发行合规、VASP 触发判断、碳市场规则、KYC/AML 与数据保护。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="compliance">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Layer 06 · 合规与风控</div>
+        <h1 class="display">一套技术系统，<span class="grad">三条法人边界</span></h1>
+        <p class="lede">合规不是律师在最后一页加的免责声明，而是<strong>系统里可配置的工作流</strong>：什么类型的发行走什么披露模板、什么等级的客户做什么尽调、什么样的动作必须先过校验。</p>
+        <div class="pill-row">
+          <a class="pill" href="#entities"><i class="dot"></i>实体隔离</a>
+          <a class="pill" href="#modules"><i class="dot"></i>合规模块</a>
+          <a class="pill" href="#vasp"><i class="dot"></i>VASP 判断</a>
+          <a class="pill" href="#redlines"><i class="dot"></i>红线</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 实体 ============ -->
+  <section class="section" id="entities">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> LEGAL STRUCTURE</div>
+        <h2 class="sec-title">三个法人，一套系统</h2>
+        <p class="sec-sub">技术系统统一，不违法；合同主体与资金流混同，违法。所以隔离必须发生在<strong>签约主体、收款账户、牌照</strong>三层，而不是在代码里加个 if。</p>
+      </div>
+
+      <div class="figure reveal">
+        <svg viewBox="0 0 900 330" role="img" aria-label="平台技术系统与三个法律实体的隔离结构">
+          <defs>
+            <marker id="a4" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="#3d454e"/>
+            </marker>
+          </defs>
+
+          <!-- platform -->
+          <rect x="140" y="14" width="620" height="46" rx="10" fill="#0f1620" stroke="#1d9bf0" stroke-opacity=".5"/>
+          <text x="450" y="34" fill="#e7e9ea" font-size="12.5" font-weight="700" text-anchor="middle" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">ZCC 平台技术系统（一套代码、一套数据库）</text>
+          <text x="450" y="50" fill="#7cc4ff" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">仅供基础设施服务 · 不签约、不收款、不担任发行人</text>
+
+          <!-- three entities -->
+          <g font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+            <rect x="30" y="106" width="258" height="86" rx="10" fill="#0b0f14" stroke="#2f3336"/>
+            <text x="46" y="128" fill="#8b5cf6" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1.4">ENTITY 01</text>
+            <text x="46" y="148" fill="#e7e9ea" font-size="12.5" font-weight="650">证券发行 / 众筹实体</text>
+            <text x="46" y="166" fill="#a9b1b9" font-size="10">承接社区轮与私募发行</text>
+            <text x="46" y="182" fill="#71767b" font-size="9.5" font-family="ui-monospace,monospace">持有：发行豁免 / 中介资质</text>
+
+            <rect x="321" y="106" width="258" height="86" rx="10" fill="#0b0f14" stroke="#2f3336"/>
+            <text x="337" y="128" fill="#8b5cf6" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1.4">ENTITY 02</text>
+            <text x="337" y="148" fill="#e7e9ea" font-size="12.5" font-weight="650">基金管理实体</text>
+            <text x="337" y="166" fill="#a9b1b9" font-size="10">担任 GP，管理基金与 SPV</text>
+            <text x="337" y="182" fill="#71767b" font-size="9.5" font-family="ui-monospace,monospace">持有：资产管理 / 基金管理资质</text>
+
+            <rect x="612" y="106" width="258" height="86" rx="10" fill="#0b0f14" stroke="#2f3336"/>
+            <text x="628" y="128" fill="#8b5cf6" font-size="9" font-family="ui-monospace,monospace" letter-spacing="1.4">ENTITY 03</text>
+            <text x="628" y="148" fill="#e7e9ea" font-size="12.5" font-weight="650">碳资产服务实体</text>
+            <text x="628" y="166" fill="#a9b1b9" font-size="10">MRV 协调、登记簿对接、注销执行</text>
+            <text x="628" y="182" fill="#71767b" font-size="9.5" font-family="ui-monospace,monospace">持有：碳资产服务 / 咨询资质</text>
+          </g>
+
+          <g stroke="#3d454e" stroke-width="1.1" fill="none" marker-end="url(#a4)">
+            <path d="M300 60 V82 H159 V106"/>
+            <path d="M450 60 V106"/>
+            <path d="M600 60 V82 H741 V106"/>
+          </g>
+
+          <!-- money flows -->
+          <g font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+            <rect x="30" y="216" width="258" height="44" rx="8" fill="#0a0c0f" stroke="#242a31" stroke-dasharray="3 3"/>
+            <text x="46" y="235" fill="#a9b1b9" font-size="10.5">资金流：投资者 → 托管账户 → 发行主体</text>
+            <text x="46" y="250" fill="#71767b" font-size="9" font-family="ui-monospace,monospace">平台不得归集</text>
+
+            <rect x="321" y="216" width="258" height="44" rx="8" fill="#0a0c0f" stroke="#242a31" stroke-dasharray="3 3"/>
+            <text x="337" y="235" fill="#a9b1b9" font-size="10.5">资金流：LP → 基金账户 → 项目</text>
+            <text x="337" y="250" fill="#71767b" font-size="9" font-family="ui-monospace,monospace">capital call 独立账户</text>
+
+            <rect x="612" y="216" width="258" height="44" rx="8" fill="#0a0c0f" stroke="#242a31" stroke-dasharray="3 3"/>
+            <text x="628" y="235" fill="#a9b1b9" font-size="10.5">资金流：碳买家 → 权益持有方</text>
+            <text x="628" y="250" fill="#71767b" font-size="9" font-family="ui-monospace,monospace">平台只收服务费</text>
+          </g>
+
+          <text x="450" y="292" fill="#f4212e" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace" opacity=".85">技术系统共享数据 ≠ 合同主体共享责任</text>
+          <text x="450" y="310" fill="#5a636c" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">三个实体之间如需服务，签独立服务协议并按市场价结算</text>
+        </svg>
+        <div class="fig-cap">Fig.6 — 平台是基础设施供应商：向三个实体提供系统服务，不参与任何一笔交易的对价。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 模块 ============ -->
+  <section class="section" id="modules">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> COMPLIANCE MODULES</div>
+        <h2 class="sec-title">六类合规要求，落成六种可配置工作流</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th style="width:17%">模块</th><th style="width:33%">关键要求</th><th>平台实现方式</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><b>证券发行合规</b></td>
+                <td>众筹 / 私募 / 基金适用不同豁免与披露要求；投资者适当性管理</td>
+                <td>按发行类型挂载披露模板与审批流；发行页强制风险提示区（不可折叠）；认购前强制问卷与冷静期</td>
+              </tr>
+              <tr>
+                <td><b>VASP / 虚拟资产</b></td>
+                <td>如涉及代币化：香港 VASP 牌照要求实缴资本、客户资产 98% 冷存储 / 2% 热存储、严格隔离与审计</td>
+                <td>代币化模块由持牌实体运营或与持牌托管方合作；<b>平台不直接托管私钥</b>；钱包能力不进入核心系统</td>
+              </tr>
+              <tr>
+                <td><b>碳市场规则</b></td>
+                <td>登记簿所有权、注销规则、双重计算防范、方法学适用性</td>
+                <td>台账排他标记 + 登记簿 API 校验 + 合同条款约束；每日余额对账；撤销与红冲流程</td>
+              </tr>
+              <tr>
+                <td><b>KYC / AML</b></td>
+                <td>投资者与碳买家身份核验、资金来源、制裁名单筛查、持续监控</td>
+                <td>统一身份服务，按门户与交易金额配置核验等级；高风险交易人工复核；记录保存期限按当地要求</td>
+              </tr>
+              <tr>
+                <td><b>数据保护</b></td>
+                <td>农户与供应链数据敏感；跨境传输限制；最小必要原则</td>
+                <td>字段级脱敏、分级权限、区域化存储、审计日志、数据主体请求流程</td>
+              </tr>
+              <tr>
+                <td><b>披露与记录保存</b></td>
+                <td>发行文件、认购记录、分配与注销凭证可追溯</td>
+                <td>append-only 审计日志 + 文档版本化 + 电子签存证；导出带哈希与时间戳</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid g3" style="margin-top:16px">
+        <div class="card reveal">
+          <h3>KYC 分级（示例）</h3>
+          <ul class="ul tight">
+            <li><b>L1</b> 浏览与预约 — 邮箱 + 手机</li>
+            <li><b>L2</b> 社区认购 — 身份证件 + 人脸 + 地址</li>
+            <li><b>L3</b> 机构 / LP — 主体文件 + UBO + 资金来源</li>
+            <li><b>L4</b> 大额碳采购 — L3 + 制裁筛查 + 人工复核</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="60">
+          <h3>发行类型 → 披露模板</h3>
+          <ul class="ul tight">
+            <li><b>社区众筹</b> — 简化披露 + 风险上限提示</li>
+            <li><b>私募</b> — 完整信息备忘录 + 适当性确认</li>
+            <li><b>基金</b> — 私募备忘录 + 基金合同 + 风险因素</li>
+            <li>模板变更需版本号，历史发行保留原版本</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="120">
+          <h3>风控看板字段</h3>
+          <ul class="ul tight r">
+            <li>守恒告警（目标 = 0）</li>
+            <li>核证驳回率、平均核证周期</li>
+            <li>注销差错与更正记录</li>
+            <li>逾期任务、超期未整改</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VASP ============ -->
+  <section class="section" id="vasp">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> VASP TRIGGER</div>
+        <h2 class="sec-title">什么时候会触发 VASP 判断</h2>
+        <p class="sec-sub">判断标准不是「有没有用区块链」，而是<strong>是否运营虚拟资产活动、是否为他人托管或转移资产</strong>。</p>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <div class="card" style="padding:20px;border-color:rgba(0,186,124,.28)">
+            <h3 style="color:var(--green)">通常不触发</h3>
+            <ul class="ul tight g">
+              <li>只在数据库记录碳权益，不发行任何链上代币</li>
+              <li>链上仅做<b>存证</b>（哈希上链），不承载价值转移</li>
+              <li>不托管任何私钥、不提供钱包服务</li>
+              <li>不撮合虚拟资产交易、不做兑换</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:20px;margin-top:12px;border-color:rgba(244,33,46,.28)">
+            <h3 style="color:var(--red)">一旦触发</h3>
+            <ul class="ul tight r">
+              <li>发行可转让的碳信用代币</li>
+              <li>为用户托管私钥或提供托管钱包</li>
+              <li>平台内撮合代币买卖、或提供兑换</li>
+              <li>以代币形式向公众募集资金</li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="note bad"><div class="lab">若触发</div><div>必须<b>持牌或与持牌方合作</b>，并满足资本金、冷热存储比例、客户资产隔离、独立审计等要求。这部分成本与周期应在项目立项时即计入，而不是开发完再补。</div></div>
+          <div class="note warn" style="margin-top:10px"><div class="lab">设计结论</div><div>MVP 与 Phase 2/3 <b>不引入任何代币与钱包</b>。链上能力仅作为后续可选模块，且由独立持牌实体承接，主系统不依赖。</div></div>
+          <div class="note" style="margin-top:10px"><div class="lab">可替代方案</div><div>用「登记簿 API + 合同 + 台账」实现可验证的权益记录，已能满足企业与基金 90% 的需求，无需代币化。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 红线 ============ -->
+  <section class="section" id="redlines">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> RED LINES</div>
+        <h2 class="sec-title">六条不可协商的红线</h2>
+        <p class="sec-sub">这些不需要讨论权衡，代码里写死，产品经理无权配置。</p>
+      </div>
+      <div class="grid g2">
+        <div class="note bad reveal"><div class="lab">01 碳权益不证券化</div><div>碳权益只能作为投资协议的<b>附属合同权利</b>，不单独发行凭证、不设二级转让、不做市价撮合。任何「可自由转让」的设计请先取得法律意见。</div></div>
+        <div class="note bad reveal" data-delay="60"><div class="lab">02 投资不等于买碳</div><div>认购股权不自动获得碳信用所有权。碳权益的取得、数量与用途必须由独立条款约定，并在界面上分栏呈现。</div></div>
+        <div class="note bad reveal" data-delay="120"><div class="lab">03 一吨一个去向</div><div>同一吨减排量不得同时计入企业范围三、用于注销、再对外出售。排他标记为必填字段，缺失即拒绝写入。</div></div>
+        <div class="note bad reveal" data-delay="180"><div class="lab">04 注销不可逆</div><div>登记簿执行后，台账锁定。更正只能追加记录，不得编辑或删除历史。管理员也无例外权限。</div></div>
+        <div class="note warn reveal"><div class="lab">05 未核证即不可交易</div><div>预评估、预测、意向量不得用于任何对外声明或权益分配。界面必须有明显的状态水印。</div></div>
+        <div class="note warn reveal" data-delay="60"><div class="lab">06 不承诺合规结论</div><div>披露支持包只提供数据与凭证，不对任何框架下的合规性或鉴证结论负责。此声明随每份导出文件输出。</div></div>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <div class="lab">治理建议</div>
+        <div>设立一个跨实体的<b>产品合规委员会</b>（法务 + 碳 + 产品 + 技术），对新增功能做「是否触碰红线」的一票否决审查。审查记录留档，作为未来监管问询的证据。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="capital.html"><span class="pn-l">上一章</span><span class="pn-t">← 资本栈</span></a>
+      <a class="next" href="roadmap.html"><span class="pn-l">下一章</span><span class="pn-t">实施路线图 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

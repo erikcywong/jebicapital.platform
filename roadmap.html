@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实施路线图 — ZCC Platform</title>
+<meta name="description" content="四阶段实施路线、阶段门验收标准、关键成功指标与风险清单。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="roadmap">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Roadmap · 实施路线</div>
+        <h1 class="display">先跑通数据模型，<span class="grad">再叠加资金流</span></h1>
+        <p class="lede">顺序本身就是风险控制。MVP 阶段引入代币化或真实资金流，会把合规复杂度提前引爆；而碳基线数据模型如果一开始建错，后面每一层都要返工。</p>
+        <div class="pill-row">
+          <span class="pill"><i class="dot"></i>4 个阶段</span>
+          <span class="pill"><i class="dot"></i>3 道阶段门</span>
+          <span class="pill"><i class="dot"></i>工期累加 22 月 / 可压至 15 月</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GANTT ============ -->
+  <section class="section" style="padding-top:24px">
+    <div class="wrap">
+      <div class="figure reveal">
+        <svg viewBox="0 0 900 236" role="img" aria-label="四阶段工期甘特图">
+          <!-- grid -->
+          <g stroke="#171b1f">
+            <line x1="0" y1="30" x2="876" y2="30"/>
+            <line x1="0" y1="70" x2="876" y2="70"/>
+            <line x1="0" y1="110" x2="876" y2="110"/>
+            <line x1="0" y1="150" x2="876" y2="150"/>
+            <line x1="0" y1="190" x2="876" y2="190"/>
+          </g>
+          <line x1="0" y1="200" x2="876" y2="200" stroke="#2f3336"/>
+          <g fill="#5a636c" font-size="9" font-family="ui-monospace,monospace">
+            <text x="0" y="218">M0</text>
+            <text x="118" y="218">M3</text>
+            <text x="276" y="218">M7</text>
+            <text x="513" y="218">M13</text>
+            <text x="860" y="218" text-anchor="end">M22</text>
+          </g>
+          <g stroke="#242a31" stroke-dasharray="2 4">
+            <line x1="118" y1="24" x2="118" y2="200"/>
+            <line x1="276" y1="24" x2="276" y2="200"/>
+            <line x1="513" y1="24" x2="513" y2="200"/>
+          </g>
+
+          <!-- bars -->
+          <rect x="0" y="36" width="118" height="26" rx="6" fill="rgba(29,155,240,.28)" stroke="#1d9bf0" stroke-opacity=".7"/>
+          <text x="10" y="54" fill="#e7e9ea" font-size="11" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">P1 孵化 + 碳预备档案</text>
+
+          <rect x="118" y="76" width="158" height="26" rx="6" fill="rgba(29,155,240,.22)" stroke="#1d9bf0" stroke-opacity=".55"/>
+          <text x="128" y="94" fill="#e7e9ea" font-size="11" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">P2 社区众筹 + 台账视图</text>
+
+          <rect x="276" y="116" width="237" height="26" rx="6" fill="rgba(0,186,124,.20)" stroke="#00ba7c" stroke-opacity=".55"/>
+          <text x="286" y="134" fill="#e7e9ea" font-size="11" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">P3 MRV 引擎 + 登记簿 API + 数据室</text>
+
+          <rect x="513" y="156" width="357" height="26" rx="6" fill="rgba(139,92,246,.18)" stroke="#8b5cf6" stroke-opacity=".55"/>
+          <text x="523" y="174" fill="#e7e9ea" font-size="11" font-weight="600" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">P4 基金全生命周期 + 双重收益报表 + 合规加固</text>
+
+          <!-- gates -->
+          <g fill="#ffd400">
+            <path d="M118 60 l6 -6 6 6 -6 6 z"/>
+            <path d="M276 100 l6 -6 6 6 -6 6 z"/>
+            <path d="M513 140 l6 -6 6 6 -6 6 z"/>
+            <path d="M870 180 l6 -6 6 6 -6 6 z"/>
+          </g>
+          <g fill="#ffd400" font-size="8.5" font-family="ui-monospace,monospace">
+            <text x="130" y="70">GATE 1</text>
+            <text x="288" y="110">GATE 2</text>
+            <text x="525" y="150">GATE 3</text>
+            <text x="820" y="194">LAUNCH</text>
+          </g>
+        </svg>
+        <div class="fig-cap">Fig.7 — 工期按顺序累加约 22 个月；若 P2 的后端与 P3 的登记簿对接并行，可压缩至 15 个月左右。阶段门不通过不得进入下一阶段。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHASES ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> PHASES</div>
+        <h2 class="sec-title">每阶段的范围、交付物与验收门</h2>
+      </div>
+
+      <div class="grid g2">
+
+        <div class="card card-tall reveal" style="border-color:rgba(29,155,240,.35)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="card-ico" style="margin:0">P1</div>
+            <span class="tag b">3–4 月 · MVP</span>
+          </div>
+          <h3>孵化 + 项目展示 + 碳预备档案</h3>
+          <p style="margin-bottom:12px">不做真实资金流，不产生碳信用。<b>目标：跑通项目入驻与碳档案数据模型。</b></p>
+          <ul class="ul">
+            <li>项目方门户、项目注册与诊断、孵化任务流</li>
+            <li>简化碳基线：因子库 + 分环节测算 + 减排潜力评分</li>
+            <li>社区预热页与预约投资（无支付）</li>
+            <li>Admin：项目审核、上下架、基础报表</li>
+          </ul>
+          <div class="note ok" style="margin-top:14px"><div class="lab">GATE 1</div><div>≥ 10 个真实项目完成碳基线录入，其中 ≥ 3 个数据可支撑后续核证材料；CarbonProfile 模型未发生结构性返工。</div></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="70">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="card-ico">P2</div>
+            <span class="tag b">4–6 月</span>
+          </div>
+          <h3>社区众筹 + 基础碳台账</h3>
+          <p style="margin-bottom:12px">碳权益层先做「台账视图」：手动记录核证量、手动分配、手动注销标记，不接登记簿 API。</p>
+          <ul class="ul">
+            <li>发行页、认购状态机、托管对接、投资者组合页</li>
+            <li>SPV 记录与碳权益穿透比例</li>
+            <li>项目详情页「股权 + 碳权益」同页呈现</li>
+            <li>手动台账：批次、分配、注销标记（带排他字段）</li>
+          </ul>
+          <div class="note ok" style="margin-top:14px"><div class="lab">GATE 2</div><div>完成 1 个真实社区轮（或等效沙盒演练），全流程资金可追溯；用户测试中 ≥ 70% 能正确区分「投资」与「碳权益」。</div></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="140" style="border-color:rgba(0,186,124,.35)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="card-ico g">P3</div>
+            <span class="tag g">6–9 月</span>
+          </div>
+          <h3>MRV 工作流 + 登记簿 API + 机构数据室</h3>
+          <p style="margin-bottom:12px">碳权益分配与注销走通端到端。<b>这是整个平台技术含量最高的一段。</b></p>
+          <ul class="ul g">
+            <li>核证方门户、七步状态机、审计轨迹、证书生成</li>
+            <li>Verra / Gold Standard 至少一家 API 对接（含对账任务）</li>
+            <li>机构门户、数据室权限、水印与下载日志</li>
+            <li>基金与 SPV 基础管理（不含 carry）</li>
+          </ul>
+          <div class="note ok" style="margin-top:14px"><div class="lab">GATE 3</div><div>至少 1 个批次完成「核证 → 登记簿签发 → 分配 → 注销」全链路，且与登记簿余额连续 30 天对账一致。</div></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="210">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="card-ico v">P4</div>
+            <span class="tag v">9–12 月</span>
+          </div>
+          <h3>基金全生命周期 + 双重收益 + 合规加固</h3>
+          <p style="margin-bottom:12px">从「能跑」到「能被审计」。</p>
+          <ul class="ul">
+            <li>capital call、NAV 估算、carry 瀑布（双口径）</li>
+            <li>退出事件、对价拆分、分配执行</li>
+            <li>企业披露支持包、双重计算强制校验</li>
+            <li>完整审计报表、风控看板、合规工作流配置器</li>
+          </ul>
+          <div class="note warn" style="margin-top:14px"><div class="lab">LAUNCH 门</div><div>外部审计或顾问复核通过；守恒校验在压力测试下 0 漏检；三实体合同与资金流书面确认无混同。</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KPI ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> METRICS</div>
+        <h2 class="sec-title">关键成功指标：四组，别贪多</h2>
+        <p class="sec-sub">每组只保留能驱动决策的指标。看板上的数字如果没人据此做决定，就该删掉。</p>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th style="width:14%">维度</th><th style="width:30%">指标</th><th style="width:26%">定义 / 口径</th><th>用来看什么</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="3"><b>项目供给</b></td><td>入驻项目数</td><td>通过审核的 Project 计数</td><td>供给端是否有真实货源</td></tr>
+              <tr><td>碳基线完成占比</td><td>完成基线 / 入驻总数</td><td>可测量化能力，低于 60% 说明表单或支持不够</td></tr>
+              <tr><td>孵化 → 融资转化率</td><td>进入众筹或机构层的项目 / 完成孵化项目</td><td>孵化层是否真的在筛项目，而非囤项目</td></tr>
+              <tr><td rowspan="3"><b>资本栈</b></td><td>众筹成功率</td><td>达标交割轮次 / 上线轮次</td><td>定价与叙事是否被市场接受</td></tr>
+              <tr><td>机构层单项目平均融资额</td><td>机构轮金额 / 项目数</td><td>机构信任度</td></tr>
+              <tr><td>基金 AUM</td><td>承诺资本 + 已到位资本</td><td>规模化能力</td></tr>
+              <tr><td rowspan="3"><b>碳权益</b></td><td>核证吨数 / 已分配 / 已注销</td><td>三个数并列展示，不合并</td><td>碳层是否在真实运转</td></tr>
+              <tr><td>碳权益合同覆盖率</td><td>含碳权益条款的融资项目 / 融资项目总数</td><td>差异化是否被写进交易文件</td></tr>
+              <tr><td>核证周期</td><td>提交 → 签发的天数中位数</td><td>MRV 流程效率</td></tr>
+              <tr><td rowspan="3"><b>风险</b></td><td>核证驳回率</td><td>驳回批次 / 提交批次</td><td>项目质量与核证方严格度</td></tr>
+              <tr><td>双重计算告警次数</td><td>目标值恒为 0</td><td>任何非零都需复盘到根因</td></tr>
+              <tr><td>注销差错率</td><td>需更正的注销 / 总注销</td><td>流程设计的可靠性</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RISK ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> RISK REGISTER</div>
+        <h2 class="sec-title">六个最可能翻车的地方</h2>
+      </div>
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th style="width:22%">风险</th><th style="width:30%">早期信号</th><th>应对</th></tr></thead>
+            <tbody>
+              <tr><td><b>碳数据质量不足</b></td><td>农户上传凭证缺失率 &gt; 30%，核证驳回集中在同一环节</td><td>降低录入门槛（图片 + 语音）、先做小样本核证、把核证要求前置到表单设计</td></tr>
+              <tr><td><b>登记簿 API 不稳定</b></td><td>签发/转移回调延迟、字段语义不一致</td><td>适配器层 + 幂等重试 + 人工兜底通道；对账任务兜住最终一致性</td></tr>
+              <tr><td><b>碳权益被当作证券</b></td><td>用户把它当可交易资产、提出转让需求</td><td>合同措辞与界面用语双重约束；不提供任何转让入口；必要时调整结构</td></tr>
+              <tr><td><b>资金流与实体混同</b></td><td>为「方便」让平台账户代收</td><td>硬性禁止；三个实体独立账户；财务按月出隔离报表</td></tr>
+              <tr><td><b>项目供给虚高</b></td><td>入驻多但碳基线完成少、融资转化低</td><td>用转化率而非入驻数作为核心 KPI；提高上架门槛</td></tr>
+              <tr><td><b>过早代币化</b></td><td>销售或投资人要求「链上化」以显得先进</td><td>以登记簿 + 合同 + 台账满足需求；代币化作为独立持牌实体的可选项，不影响主线</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:16px">
+        <div class="lab">一句话总结</div>
+        <div>技术难点不在做一个众筹网站或一个碳台账，而在于<b>用同一套项目 ID 把资本事件和碳事件绑定在同一条时间线上</b>，同时在合同、台账、登记簿三个层面守住「碳权益不是股权、投资不等于买碳」的边界。</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="compliance.html"><span class="pn-l">上一章</span><span class="pn-t">← 合规风控</span></a>
+      <a class="next" href="index.html"><span class="pn-l">回到起点</span><span class="pn-t">平台总览 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

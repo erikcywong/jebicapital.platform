@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>平台架构 — ZCC Platform</title>
+<meta name="description" content="ZCC Platform 六层功能架构、统一数据底座实体模型、技术架构与碳量守恒约束。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="architecture">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Architecture · 平台架构</div>
+        <h1 class="display">六层 + 一个底座</h1>
+        <p class="lede">层是功能边界，底座是数据边界。层可以按阶段上线，底座必须一次定对——<strong>项目主键、碳量守恒、事件时间线</strong>这三件事改起来最贵。</p>
+        <div class="pill-row">
+          <a class="pill" href="#layers"><i class="dot"></i>六层模块清单</a>
+          <a class="pill" href="#data"><i class="dot"></i>数据底座与实体</a>
+          <a class="pill" href="#invariant"><i class="dot"></i>守恒约束</a>
+          <a class="pill" href="#tech"><i class="dot"></i>技术栈选型</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAYERS ============ -->
+  <section class="section" id="layers">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> FUNCTIONAL LAYERS</div>
+        <h2 class="sec-title">每层交付什么、谁在用、留下什么数据</h2>
+        <p class="sec-sub">功能设计的验收标准不是「页面做出来了」，而是<strong>这一层往数据底座写了什么</strong>。写不出数据的模块就是装饰。</p>
+      </div>
+
+      <div class="grid g2">
+
+        <div class="card card-tall reveal">
+          <div class="card-ico">L1</div>
+          <h3>孵化层 <span class="tag" style="margin-left:6px">JebiStarter</span></h3>
+          <p>让早期项目在进入任何融资之前，先完成「可融资化」与「可测量化」。</p>
+          <ul class="ul">
+            <li><b>项目注册与诊断</b> — 产业链环节（种植/加工/烘焙/包装/物流/门店）、所在地、碳项目类型、融资阶段</li>
+            <li><b>孵化工作流</b> — 里程碑清单：商业计划、碳基线、供应链数据、MVP，平台跟踪完成度</li>
+            <li><b>碳基线预评估</b> — 内置排放因子库 + IPCC 方法学，产出初步碳足迹与减排潜力评分（<b>不可交易</b>）</li>
+            <li><b>社区预热</b> — 预上线项目页，收集关注、预约投资、粉丝反馈，为众筹蓄水</li>
+          </ul>
+          <div class="tag-row"><span class="tag b">写入 CarbonProfile</span><span class="tag">门户：项目方 / 社区</span></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="70">
+          <div class="card-ico">L2</div>
+          <h3>社区股权众筹层 <span class="tag" style="margin-left:6px">Wefunder</span></h3>
+          <p>合规地把粉丝与社区资金导入项目，并把碳权益的穿透安排写进 SPV 结构。</p>
+          <ul class="ul">
+            <li><b>发行页面</b> — 故事、融资目标、股权/SPV 结构、资金用途、碳权益说明、风险披露（强制区块）</li>
+            <li><b>认购与托管</b> — 承诺认购 → 托管账户 → 达标交割；状态机：草稿 / 待签 / 已承诺 / 已托管 / 已交割 / 已取消</li>
+            <li><b>SPV 管理</b> — 多投资者集中持股，记录 SPV 层权益分配与碳权益穿透比例</li>
+            <li><b>投资者组合页</b> — 按已确认/待处理/已取消分组，合同 PDF 下载、投资详情</li>
+          </ul>
+          <div class="tag-row"><span class="tag b">写入 Investment / SPV</span><span class="tag">门户：社区投资者</span></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="140">
+          <div class="card-ico">L3</div>
+          <h3>机构资本与基金层 <span class="tag" style="margin-left:6px">Jebi Capital</span></h3>
+          <p>承接成长期项目与机构资金，管理基金与 SPV 的全生命周期。</p>
+          <ul class="ul">
+            <li><b>机构数据室</b> — 尽调材料、核证报告、财务模型、供应链合同，权限分级到文件夹级</li>
+            <li><b>基金管理系统</b> — 基金设立、LP 认购、capital call、费用计算、NAV 估算、carry 瀑布</li>
+            <li><b>SPV 管理</b> — 设立、银行/托管对接、分配记录、税务文件</li>
+            <li><b>并购与退出</b> — 退出事件登记、收益分配、股权与碳权益对价拆分</li>
+          </ul>
+          <div class="tag-row"><span class="tag b">写入 Fund / CapitalCall</span><span class="tag">门户：机构 / 基金管理</span></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="210" style="border-color:var(--accent-line)">
+          <div class="card-ico g">L4</div>
+          <h3>碳权益层 <span class="tag g" style="margin-left:6px">贯穿层 · 核心</span></h3>
+          <p>同时服务「投资企业获得碳权益」与「基金获得碳收益」两个目标，但绝不把股权投资等同于碳购买。</p>
+          <ul class="ul g">
+            <li><b>碳资产档案与台账</b> — 方法学、基线、监测期、预计量、核证状态、登记簿 ID；平台不做注册处，做注册处的聚合视图</li>
+            <li><b>MRV 工作流引擎</b> — 数据接入 → 监测报告 → 核证审核 → 签发 → 转移 → 分配或注销，状态机 + 不可篡改审计轨迹</li>
+            <li><b>碳权益合同管理</b> — 条款库（优先购买权、分配比例、远期价格公式、回购替换），签发后自动计算应得吨数</li>
+            <li><b>远期采购与注销</b> — 意向 → 条款清单 → 法律文件 → 注销指令 → 登记簿 API 执行 → 证书回写</li>
+            <li><b>企业披露支持包</b> — 台账报表对齐范围三/抵消/移除字段，但<b>不承诺合规结论</b></li>
+          </ul>
+          <div class="tag-row"><span class="tag g">写入 VerificationBatch / Entitlement / Retirement</span></div>
+        </div>
+
+        <div class="card card-tall reveal">
+          <div class="card-ico a">L5</div>
+          <h3>退出与收益分配层</h3>
+          <p>让基金与投资企业在一屏看到「股权 + 碳权益」的双重收益。</p>
+          <ul class="ul a">
+            <li><b>双重收益仪表盘</b> — 股权价值变动 / 已实现碳权益收益 / 未实现碳权益存量</li>
+            <li><b>退出事件处理</b> — IPO / 并购 / 老股转让，股权对价与碳权益对价分别计算、分别分配</li>
+            <li><b>carry 计算</b> — 是否含碳权益收益需在基金合同预先定义，系统支持两种口径配置</li>
+          </ul>
+          <div class="tag-row"><span class="tag a">写入 ExitEvent / Distribution</span></div>
+        </div>
+
+        <div class="card card-tall reveal" data-delay="70">
+          <div class="card-ico r">L6</div>
+          <h3>合规与风控层 <span class="tag r" style="margin-left:6px">横贯</span></h3>
+          <p>把证券合规、碳市场合规、反洗钱、数据保护做成可配置工作流，而不是事后补文件。</p>
+          <ul class="ul r">
+            <li><b>发行合规配置</b> — 按发行类型（众筹/私募/基金）挂不同披露模板与审批流</li>
+            <li><b>VASP 触发判断</b> — 代币化模块由持牌实体运营或与持牌托管方合作，平台不直接托管私钥</li>
+            <li><b>KYC / AML</b> — 统一身份服务，按门户与交易类型配置核验等级</li>
+            <li><b>数据保护</b> — 农户与供应链数据分级、脱敏、审计日志</li>
+          </ul>
+          <div class="tag-row"><span class="tag r">写入 ComplianceCase / AuditLog</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section class="section" id="data">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> DATA FOUNDATION</div>
+        <h2 class="sec-title">数据底座：一个主键，两条分支，一个汇合点</h2>
+        <p class="sec-sub">Project 是唯一主键。左侧资本域逐层分裂（轮次 → SPV → 投资），右侧碳域逐层收敛（批次 → 权益 → 注销）。两者只在<strong>合同</strong>上耦合。</p>
+      </div>
+
+      <div class="figure reveal">
+        <svg viewBox="0 0 900 452" role="img" aria-label="ZCC 数据模型 ER 图">
+          <defs>
+            <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="#3d454e"/>
+            </marker>
+          </defs>
+
+          <!-- Project -->
+          <g>
+            <rect x="345" y="26" width="210" height="52" rx="10" fill="#0f1620" stroke="#1d9bf0" stroke-width="1.2"/>
+            <text x="450" y="47" fill="#e7e9ea" font-size="13" font-weight="700" text-anchor="middle" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">Project</text>
+            <text x="450" y="64" fill="#7cc4ff" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">project_id · PK</text>
+          </g>
+
+          <!-- left capital chain -->
+          <g font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+            <rect x="26" y="116" width="200" height="50" rx="9" fill="#0b0f14" stroke="#242a31"/>
+            <text x="126" y="136" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">FinancingRound</text>
+            <text x="126" y="152" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">轮次 · 目标 / 已募 / 状态</text>
+
+            <rect x="26" y="196" width="200" height="50" rx="9" fill="#0b0f14" stroke="#242a31"/>
+            <text x="126" y="216" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">SPV</text>
+            <text x="126" y="232" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">载体 · 份额表 · 碳穿透比例</text>
+
+            <rect x="26" y="276" width="200" height="50" rx="9" fill="#0b0f14" stroke="#242a31"/>
+            <text x="126" y="296" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">Investment</text>
+            <text x="126" y="312" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">认购 · 金额 / 份额 / 状态</text>
+
+            <rect x="26" y="356" width="200" height="50" rx="9" fill="#0b0f14" stroke="#242a31"/>
+            <text x="126" y="376" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">Fund / CapitalCall</text>
+            <text x="126" y="392" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">AUM · 出资 · NAV · carry</text>
+          </g>
+
+          <!-- right carbon chain -->
+          <g font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+            <rect x="674" y="116" width="200" height="50" rx="9" fill="#08120f" stroke="#1c3a30"/>
+            <text x="774" y="136" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">CarbonProfile</text>
+            <text x="774" y="152" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">方法学 · 基线 · 预计量</text>
+
+            <rect x="674" y="196" width="200" height="50" rx="9" fill="#08120f" stroke="#1c3a30"/>
+            <text x="774" y="216" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">VerificationBatch</text>
+            <text x="774" y="232" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">核证批次 · 签发量 · registry_id</text>
+
+            <rect x="674" y="276" width="200" height="50" rx="9" fill="#08120f" stroke="#1c3a30"/>
+            <text x="774" y="296" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">CarbonEntitlement</text>
+            <text x="774" y="312" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">受益人 · 吨数 · vintage · 用途</text>
+
+            <rect x="674" y="356" width="200" height="50" rx="9" fill="#08120f" stroke="#1c3a30"/>
+            <text x="774" y="376" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle">Retirement</text>
+            <text x="774" y="392" fill="#71767b" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">注销 · 证书号 · 不可逆锁定</text>
+          </g>
+
+          <!-- CarbonContract -->
+          <rect x="345" y="196" width="210" height="50" rx="9" fill="#0d1013" stroke="#8b5cf6" stroke-opacity=".55"/>
+          <text x="450" y="216" fill="#e7e9ea" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">CarbonContract</text>
+          <text x="450" y="232" fill="#a78bfa" font-size="9.5" text-anchor="middle" font-family="ui-monospace,monospace">优先购买权 / 比例 / 价格公式</text>
+
+          <!-- edges -->
+          <g fill="none" stroke="#3d454e" stroke-width="1.1" marker-end="url(#ar)">
+            <path d="M345 52 H126 V116"/>
+            <path d="M555 52 H774 V116"/>
+            <line x1="126" y1="166" x2="126" y2="196"/>
+            <line x1="126" y1="246" x2="126" y2="276"/>
+            <line x1="126" y1="326" x2="126" y2="356"/>
+            <line x1="774" y1="166" x2="774" y2="196"/>
+            <line x1="774" y1="246" x2="774" y2="276"/>
+            <line x1="774" y1="326" x2="774" y2="356"/>
+          </g>
+          <g stroke="#8b5cf6" stroke-opacity=".6" stroke-width="1.1" fill="none" stroke-dasharray="3 3">
+            <line x1="450" y1="78" x2="450" y2="196"/>
+            <line x1="555" y1="221" x2="674" y2="221"/>
+            <line x1="345" y1="221" x2="226" y2="221"/>
+          </g>
+
+          <!-- edge labels -->
+          <g fill="#5a636c" font-size="9" font-family="ui-monospace,monospace">
+            <text x="236" y="46">1 : N</text>
+            <text x="644" y="46">1 : 1</text>
+            <text x="132" y="184">1 : N</text>
+            <text x="132" y="264">1 : N</text>
+            <text x="780" y="184">1 : N</text>
+            <text x="780" y="264">1 : N</text>
+            <text x="458" y="150">绑定</text>
+            <text x="600" y="212">约束</text>
+            <text x="262" y="212">约束</text>
+          </g>
+
+          <!-- legend -->
+          <g font-family="ui-monospace,monospace" font-size="9">
+            <rect x="26" y="428" width="9" height="9" rx="2" fill="none" stroke="#242a31"/>
+            <text x="42" y="437" fill="#71767b">资本域</text>
+            <rect x="110" y="428" width="9" height="9" rx="2" fill="none" stroke="#1c3a30"/>
+            <text x="126" y="437" fill="#71767b">碳域</text>
+            <rect x="186" y="428" width="9" height="9" rx="2" fill="none" stroke="#8b5cf6" stroke-opacity=".55"/>
+            <text x="202" y="437" fill="#71767b">耦合点</text>
+          </g>
+        </svg>
+        <div class="fig-cap">Fig.2 — 一个项目 → 多个融资轮次 → 多个 SPV → 多笔投资；一个核证批次 → 可拆成多条注销记录。CarbonContract 是唯一跨域实体。</div>
+      </div>
+
+      <div class="grid g2" style="margin-top:16px">
+        <div class="card reveal">
+          <h3>实体清单（12 个核心对象）</h3>
+          <ul class="ul tight">
+            <li><b>Project</b> — 主键，承载所有资本与碳事件的归属</li>
+            <li><b>FinancingRound / SPV / Investment</b> — 资本域
+            </li>
+            <li><b>Fund / Commitment / CapitalCall / Distribution</b> — 基金域</li>
+            <li><b>CarbonProfile</b> — 碳基线、方法学、预计减排量（1:1）</li>
+            <li><b>VerificationBatch / CarbonEntitlement / Retirement</b> — 碳域三层</li>
+            <li><b>CarbonContract</b> — 权益条款、远期采购、优先购买权</li>
+            <li><b>Event</b> — 统一事件总线（append-only）</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="70">
+          <h3>事件总线：一条时间线的实现方式</h3>
+          <p>所有状态变更写成不可变事件，而不是就地改字段。业务表是事件流的物化视图。</p>
+          <div class="code" style="margin-top:12px;font-size:11px;line-height:1.8">event_id  project_id  type            actor
+E-1042    P-0007      round.closed    capital
+E-1043    P-0007      batch.verified  mrv
+E-1044    P-0007      ent.allocated   carbon
+E-1045    P-0007      carbon.retired  enterprise
+E-1046    P-0007      exit.closed     fund</div>
+          <p style="margin-top:12px;font-size:12.5px;color:var(--muted)">→ 项目时间线、投资人通知、披露报表、审计追溯全部由同一事件流派生。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INVARIANT ============ -->
+  <section class="section" id="invariant">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> INVARIANT</div>
+        <h2 class="sec-title">碳量守恒：任何时刻不允许超额分配</h2>
+        <p class="sec-sub">这是全平台唯一一条数据库级硬约束。它不是业务规则，是<strong>防欺诈机制</strong>——双重计算（double counting）在碳市场是刑事风险，不是会计差错。</p>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <div class="code"><span class="c">// 每个核证批次，任何时刻必须满足：</span>
+<span class="k">issued</span>(batch)
+  − Σ <span class="s">allocated</span>(entitlement)
+  − Σ <span class="s">retired</span>(retirement)
+  − Σ <span class="s">sold</span>(external_transfer)
+  − <span class="n">reserve</span>(batch)
+  = <span class="n">0</span>
+
+<span class="c">// 分配时的事务性校验（伪代码）</span>
+<span class="k">BEGIN</span> TRANSACTION;
+  <span class="k">SELECT</span> issued <span class="k">FROM</span> verification_batch
+    <span class="k">WHERE</span> id = :batch <span class="k">FOR UPDATE</span>;
+  <span class="k">SELECT</span> coalesce(sum(t),0) <span class="k">FROM</span> entitlement
+    <span class="k">WHERE</span> batch_id = :batch;
+  <span class="k">IF</span> used + :new_t &gt; issued
+    <span class="k">THEN RAISE</span> OVER_ALLOCATION;
+  <span class="k">INSERT INTO</span> entitlement ...;
+<span class="k">COMMIT</span>;</div>
+          <p class="fig-cap">强制手段：行级锁 + CHECK 约束 + 每日对账任务，三者缺一不可。</p>
+        </div>
+        <div class="reveal" data-delay="80">
+          <div class="grid" style="gap:10px">
+            <div class="note ok"><div class="lab">约束 1</div><div><b>签发即锁定量。</b>VerificationBatch 的 issued_tons 只能由登记簿回调写入，平台内不可编辑。</div></div>
+            <div class="note ok"><div class="lab">约束 2</div><div><b>注销不可逆。</b>Retirement 一旦提交，对应批次余额永久扣减；修正只能新增反向记录并留痕。</div></div>
+            <div class="note"><div class="lab">约束 3</div><div><b>用途排他。</b>每条 Entitlement 必须且只能标记一种去向：scope3 / offset / resale / reserve。</div></div>
+            <div class="note warn"><div class="lab">约束 4</div><div><b>跨批次不可挪用。</b>批次 A 的余额不能用于满足批次 B 的分配，即使同项目同方法学。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TECH ============ -->
+  <section class="section" id="tech">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> TECH STACK</div>
+        <h2 class="sec-title">技术选型：模块化单体起步</h2>
+        <p class="sec-sub">按域拆包，不按域拆服务。碳域的事务一致性要求很高，过早微服务化会带来分布式事务与对账地狱。</p>
+      </div>
+
+      <div class="tbl-wrap reveal">
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th style="width:16%">层次</th><th style="width:40%">建议</th><th>理由 / 约束</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><b>前端</b></td>
+                <td>多门户共享组件库；项目方与社区端偏「产品目录 + 仪表盘」，机构端偏「数据室 + 台账」</td>
+                <td>同一套设计 token，不同信息密度。机构端表格优先，社区端卡片优先。</td>
+              </tr>
+              <tr>
+                <td><b>后端</b></td>
+                <td>模块化单体：<span class="mono">project / capital / carbon / compliance</span> 四域分包，共用事务边界</td>
+                <td>碳量守恒需要跨表行锁；跨服务无法保证。先单库单事务，规模化后再按域切。</td>
+              </tr>
+              <tr>
+                <td><b>数据层</b></td>
+                <td>PostgreSQL 存台账与关系；核证文件与证书走对象存储；审计日志 append-only（只插不改）</td>
+                <td>金额与吨数统一用 numeric，禁止 float。所有金额双记录：原币 + 结算币。</td>
+              </tr>
+              <tr>
+                <td><b>链上（可选）</b></td>
+                <td>如需代币化，链上记录作为登记簿的<b>补充</b>，不替代法定登记</td>
+                <td>MVP 不上链。上线即触发 VASP 判断与托管合规成本。</td>
+              </tr>
+              <tr>
+                <td><b>集成</b></td>
+                <td>登记簿 API（Verra / Gold Standard / Puro.earth）、支付与托管、KYC 服务、电子签、基金会计系统</td>
+                <td>登记簿 API 全部做成适配器接口，统一内部 <span class="mono">RegistryPort</span>，避免绑定单一标准。</td>
+              </tr>
+              <tr>
+                <td><b>权限</b></td>
+                <td>RBAC + 项目级数据隔离：机构只能看到被授权项目的数据室</td>
+                <td>行级安全策略在数据库层实现，不只在前端隐藏菜单。</td>
+              </tr>
+              <tr>
+                <td><b>可观测</b></td>
+                <td>事件流回放、对账日报、双重计算告警、合规事件看板</td>
+                <td>告警必须落到人：每条告警绑定责任角色与 SLA。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid g4" style="margin-top:16px">
+        <div class="card reveal"><div class="card-ico">D1</div><h3>项目域</h3><p>Project、CarbonProfile、里程碑、文档。写入频率低，读取频率高。</p></div>
+        <div class="card reveal" data-delay="60"><div class="card-ico">D2</div><h3>资本域</h3><p>Round、SPV、Investment、Fund、CapitalCall。金额一致性要求最高。</p></div>
+        <div class="card reveal" data-delay="120"><div class="card-ico g">D3</div><h3>碳域</h3><p>Batch、Entitlement、Retirement、Contract。守恒约束与审计轨迹的核心。</p></div>
+        <div class="card reveal" data-delay="180"><div class="card-ico r">D4</div><h3>合规域</h3><p>KYC、发行豁免、审批流、告警。横切所有域，只读为主。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="index.html"><span class="pn-l">上一章</span><span class="pn-t">← 平台总览</span></a>
+      <a class="next" href="portals.html"><span class="pn-l">下一章</span><span class="pn-t">门户矩阵 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

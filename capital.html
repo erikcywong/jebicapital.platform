@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>资本栈 — ZCC Platform</title>
+<meta name="description" content="孵化层、社区股权众筹、机构资本与基金、退出与双重收益分配。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d9bf0'/><text x='16' y='22' font-size='14' font-family='monospace' font-weight='700' fill='%23000' text-anchor='middle'>Z</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="capital">
+
+<header class="topbar" id="topbar"></header>
+
+<main>
+
+  <section class="hero-sm">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Capital Stack · 资本栈</div>
+        <h1 class="display">从孵化到退出，<span class="grad">每一层资本都有对应的信息义务</span></h1>
+        <p class="lede">社区轮要的是参与感与透明披露，机构轮要的是数据室与审计轨迹，基金要的是 capital call 与 carry 精度。同一套项目数据，三种呈现深度。</p>
+        <div class="pill-row">
+          <a class="pill" href="#incubate"><i class="dot"></i>孵化层</a>
+          <a class="pill" href="#crowd"><i class="dot"></i>社区众筹</a>
+          <a class="pill" href="#fund"><i class="dot"></i>机构与基金</a>
+          <a class="pill" href="#exit"><i class="dot"></i>退出与双收益</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STAIRCASE ============ -->
+  <section class="section" style="padding-top:24px">
+    <div class="wrap">
+      <div class="figure reveal">
+        <svg viewBox="0 0 900 300" role="img" aria-label="资本栈阶梯：随项目阶段递进，碳权益合同全程贯穿">
+          <defs>
+            <linearGradient id="s1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#1d9bf0" stop-opacity=".26"/>
+              <stop offset="1" stop-color="#1d9bf0" stop-opacity=".05"/>
+            </linearGradient>
+          </defs>
+
+          <!-- axis -->
+          <line x1="70" y1="258" x2="876" y2="258" stroke="#242a31"/>
+          <g fill="#5a636c" font-size="9" font-family="ui-monospace,monospace" text-anchor="middle">
+            <text x="70" y="276">孵化</text>
+            <text x="231" y="276">种子</text>
+            <text x="392" y="276">A 轮</text>
+            <text x="553" y="276">成长</text>
+            <text x="714" y="276">并购/上市</text>
+            <text x="860" y="276">退出</text>
+          </g>
+          <g stroke="#1c2126" stroke-dasharray="2 5">
+            <line x1="231" y1="34" x2="231" y2="258"/>
+            <line x1="392" y1="34" x2="392" y2="258"/>
+            <line x1="553" y1="34" x2="553" y2="258"/>
+            <line x1="714" y1="34" x2="714" y2="258"/>
+          </g>
+
+          <g font-family="-apple-system,Segoe UI,PingFang SC,sans-serif">
+            <!-- L2 community -->
+            <rect x="88" y="46" width="400" height="44" rx="8" fill="url(#s1)" stroke="#1d9bf0" stroke-opacity=".45"/>
+            <text x="104" y="66" fill="#e7e9ea" font-size="12.5" font-weight="650">社区股权众筹</text>
+            <text x="104" y="81" fill="#a9b1b9" font-size="9.5" font-family="ui-monospace,monospace">ticket ¥1k – 50k · 股权 / SPV 份额</text>
+            <text x="478" y="62" fill="#7cc4ff" font-size="11" text-anchor="end" font-family="ui-monospace,monospace">L2</text>
+
+            <!-- L3 institution -->
+            <rect x="231" y="102" width="440" height="44" rx="8" fill="url(#s1)" stroke="#1d9bf0" stroke-opacity=".45"/>
+            <text x="247" y="122" fill="#e7e9ea" font-size="12.5" font-weight="650">机构 SPV / 战略投资</text>
+            <text x="247" y="137" fill="#a9b1b9" font-size="9.5" font-family="ui-monospace,monospace">ticket ¥500万 – 2,000万 · 股权 + 碳权益条款</text>
+            <text x="661" y="118" fill="#7cc4ff" font-size="11" text-anchor="end" font-family="ui-monospace,monospace">L3</text>
+
+            <!-- fund -->
+            <rect x="392" y="158" width="480" height="44" rx="8" fill="url(#s1)" stroke="#1d9bf0" stroke-opacity=".45"/>
+            <text x="408" y="178" fill="#e7e9ea" font-size="12.5" font-weight="650">主题基金（咖啡零碳）</text>
+            <text x="408" y="193" fill="#a9b1b9" font-size="9.5" font-family="ui-monospace,monospace">基金 AUM 区间 · LP 份额 · carry 瀑布</text>
+            <text x="862" y="174" fill="#7cc4ff" font-size="11" text-anchor="end" font-family="ui-monospace,monospace">L3</text>
+
+            <!-- carbon rights -->
+            <rect x="108" y="214" width="764" height="34" rx="8" fill="rgba(0,186,124,.10)" stroke="#00ba7c" stroke-opacity=".5" stroke-dasharray="5 3"/>
+            <text x="124" y="235" fill="#e7e9ea" font-size="12" font-weight="650">碳权益合同（优先购买权 / 分配比例 / 远期采购）</text>
+            <text x="856" y="235" fill="#00ba7c" font-size="9.5" text-anchor="end" font-family="ui-monospace,monospace">贯穿全阶段 · 不随融资轮次重建</text>
+          </g>
+        </svg>
+        <div class="fig-cap">Fig.5 — 资本随阶段递进，碳权益合同从孵化期即开始绑定，不因新一轮融资而重签。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 孵化 ============ -->
+  <section class="section" id="incubate">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>01</b> INCUBATION</div>
+        <h2 class="sec-title">孵化层：可融资化 + 可测量化</h2>
+        <p class="sec-sub">这一层不碰钱，只解决两件事：项目值不值得投（可融资化），减排量算不算得清（可测量化）。</p>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th style="width:30%">孵化任务</th><th style="width:38%">交付物</th><th>完成判定</th></tr></thead>
+                <tbody>
+                  <tr><td><b>主体与产权</b></td><td>营业执照 / 合作社登记、土地或经营权证明</td><td>文件核验通过 + 有效期检查</td></tr>
+                  <tr><td><b>商业计划</b></td><td>产业链定位、产能、客户、单位经济模型</td><td>关键假设可被数据室引用</td></tr>
+                  <tr><td><b>碳基线</b></td><td>排放清单、基线情景、减排潜力（tCO₂e/年）</td><td>因子匹配率 ≥ 90%，缺项已说明</td></tr>
+                  <tr><td><b>供应链数据</b></td><td>上游农户/合作社清单、采购记录、可追溯方案</td><td>至少一个批次可端到端追溯</td></tr>
+                  <tr><td><b>MVP / 试点</b></td><td>试点地块或产线数据、单位成本验证</td><td>连续 3 个月运营数据</td></tr>
+                  <tr><td><b>合规自查</b></td><td>资质、许可、环保与用工合规声明</td><td>无未决重大处罚</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">完成度 = 已完成任务权重之和。低于 60% 不允许上架发行页。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="card" style="padding:20px">
+            <h3>碳基线预评估的输出</h3>
+            <p>内置简化排放因子库 + IPCC 方法学，产出三样东西——<b>都不可交易</b>：</p>
+            <ul class="ul tight">
+              <li><b>初步碳足迹</b> — 按环节拆分（种植/加工/烘焙/包装/物流/门店）</li>
+              <li><b>减排潜力评分</b> — 0–100，决定项目在发现页的排序权重之一</li>
+              <li><b>碳预备档案</b> — CarbonProfile 草稿，供后续正式 MRV 复用，避免重复录入</li>
+            </ul>
+            <div class="note warn" style="margin-top:14px">
+              <div class="lab">边界</div>
+              <div>预评估结果<b>不得</b>用于任何对外碳声明、不得计入企业范围三、不得挂牌出售。界面上必须标注「未核证 / Non-verified」水印。</div>
+            </div>
+          </div>
+          <div class="card" style="padding:20px;margin-top:12px">
+            <h3>社区预热（融资前的蓄水）</h3>
+            <ul class="ul tight">
+              <li>预上线项目页：故事、团队、进展更新</li>
+              <li>「预约投资」按钮：收集意向金额区间，不发售、不收钱</li>
+              <li>关注者画像：地区、金额区间、是否机构</li>
+              <li>转正式发行时，预约用户优先通知</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 社区众筹 ============ -->
+  <section class="section" id="crowd">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>02</b> COMMUNITY ROUND</div>
+        <h2 class="sec-title">社区股权众筹：状态机比页面重要</h2>
+        <p class="sec-sub">众筹最容易出事的地方是「钱收了但没交割」。所以认购必须是一条带托管与退款路径的状态机，而不是一个支付按钮。</p>
+      </div>
+
+      <div class="code reveal" style="margin-bottom:16px">draft ──▶ pending_sign ──▶ committed ──▶ escrowed ──▶ closed
+  │            │              │             │
+  └─▶ cancelled ◀─────────────┴─────────────┴──▶ refunded（未达目标 / 发行撤销）
+
+<span class="c">// 每个状态的可执行动作由角色 + 发行类型共同决定</span>
+<span class="c">// refunded 必须原路退回，不得转为平台余额</span></div>
+
+      <div class="grid g2">
+        <div class="card reveal">
+          <div class="card-ico">A</div>
+          <h3>发行页必备区块（顺序不可调）</h3>
+          <ul class="ul tight">
+            <li>项目故事与产业链位置</li>
+            <li>融资目标、最低/最高额、期限</li>
+            <li>股权或 SPV 结构说明图</li>
+            <li>资金用途拆分（含碳基线/MRV 预算）</li>
+            <li><b>碳权益说明</b>——明确是合同权利、不可转让</li>
+            <li>风险披露（不可折叠、不可勾选跳过）</li>
+          </ul>
+        </div>
+        <div class="card reveal" data-delay="70">
+          <div class="card-ico">B</div>
+          <h3>SPV 集中持股与碳权益穿透</h3>
+          <p>多个社区投资者通过一个 SPV 持股，平台记录两层权益：</p>
+          <div class="code" style="margin-top:12px;font-size:11px;line-height:1.75">SPV-07 (持股 8.0% of Project)
+ ├─ 碳权益穿透比例: 8.0% of entitlement pool
+ ├─ Investor A  ¥50,000 → 12.5% of SPV
+ ├─ Investor B  ¥30,000 →  7.5% of SPV
+ └─ ... (合计 100%)
+
+A 的碳权益 = pool × 8.0% × 12.5%</div>
+          <p style="margin-top:12px;font-size:12.5px;color:var(--muted)">→ 投资者只看到自己的那一份，永远看不到 SPV 全表。</p>
+        </div>
+      </div>
+
+      <div class="grid g3" style="margin-top:14px">
+        <div class="card reveal"><div class="card-ico">C</div><h3>我的投资</h3><p>已确认 / 待处理 / 已取消三栏，每条含金额、份额、状态、合同 PDF、下次节点。</p></div>
+        <div class="card reveal" data-delay="60"><div class="card-ico">D</div><h3>资金托管</h3><p>第三方托管账户，达标才交割；未达标自动退款，平台不触碰本金。</p></div>
+        <div class="card reveal" data-delay="120"><div class="card-ico">E</div><h3>投资人关系</h3><p>季度更新推送、问答区、投票（如章程允许），全部留档可审计。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 机构与基金 ============ -->
+  <section class="section" id="fund">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>03</b> INSTITUTIONAL &amp; FUND</div>
+        <h2 class="sec-title">机构与基金：数据室、资本调用、NAV</h2>
+        <p class="sec-sub">机构不看故事，看证据链。基金不看单项目，看组合与现金流节奏。</p>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <h3 style="font-size:15px;margin:0 0 12px">机构数据室：权限分级</h3>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th style="width:26%">文件夹</th><th style="width:30%">内容</th><th>默认可见</th></tr></thead>
+                <tbody>
+                  <tr><td><b>01 公司</b></td><td>注册、股权结构、董事会决议</td><td>已签 NDA 的机构</td></tr>
+                  <tr><td><b>02 财务</b></td><td>三表、管理报表、单位经济</td><td>进入尽调阶段的机构</td></tr>
+                  <tr><td><b>03 碳</b></td><td>基线、监测报告、核证报告、登记簿凭证</td><td>全部机构（公开级）</td></tr>
+                  <tr><td><b>04 供应链</b></td><td>采购合同、农户清单、可追溯记录</td><td>脱敏后开放，逐份授权</td></tr>
+                  <tr><td><b>05 法律</b></td><td>重大合同、诉讼、许可</td><td>仅投委会成员</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">所有浏览与下载写日志：谁、何时、哪个文件、IP、水印编号。撤销授权即时生效。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <h3 style="font-size:15px;margin:0 0 12px">基金生命周期</h3>
+          <div class="steps">
+            <div class="step"><div class="step-n" style="width:34px;height:34px;border-radius:9px;font-size:10px">01</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">设立</h4><p style="font-size:12.5px">基金实体、期限、费率（管理费/carry）、投资范围与碳权益口径写入基金合同。</p></div></div>
+            <div class="step"><div class="step-n" style="width:34px;height:34px;border-radius:9px;font-size:10px">02</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">LP 认购</h4><p style="font-size:12.5px">Commitment 登记、KYC、电签、首期出资通知。</p></div></div>
+            <div class="step"><div class="step-n" style="width:34px;height:34px;border-radius:9px;font-size:10px">03</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">资本调用</h4><p style="font-size:12.5px">按项目需要发起 capital call，按份额分摊，追踪到账，逾期计息。</p></div></div>
+            <div class="step"><div class="step-n" style="width:34px;height:34px;border-radius:9px;font-size:10px">04</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">估值与报表</h4><p style="font-size:12.5px">季度 NAV、估值方法披露、LP 报表批量生成。</p></div></div>
+            <div class="step"><div class="step-n" style="width:34px;height:34px;border-radius:9px;font-size:10px">05</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13.5px">退出与分配</h4><p style="font-size:12.5px">返还本金 → 优先收益 → carry 瀑布 → 按口径分配碳权益收益。</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card reveal">
+          <h3>carry 双口径（必须在基金合同预先定义）</h3>
+          <div class="tbl-wrap" style="margin-top:10px;border:0">
+            <table>
+              <thead><tr><th style="width:34%">口径</th><th>计算基础</th></tr></thead>
+              <tbody>
+                <tr><td><b>A · 仅股权</b></td><td>carry = (股权退出对价 − 本金 − 优先收益) × carry%</td></tr>
+                <tr><td><b>B · 含碳权益</b></td><td>carry = (股权对价 + 已实现碳权益收益 − 本金 − 优先收益) × carry%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:12px;font-size:12.5px;color:var(--muted)">系统按基金维度锁定口径，不允许中途切换；如需变更须走 LP 决议并新增版本。</p>
+        </div>
+        <div class="card reveal" data-delay="70">
+          <h3>NAV 估算的三条纪律</h3>
+          <ul class="ul tight a">
+            <li><b>未核证的碳权益不计入 NAV</b>——只作附注披露</li>
+            <li>已签发未注销的碳权益按可观察市价或最近交易价计量，缺价则按成本</li>
+            <li>估值方法每次变动必须在 LP 报表中说明理由</li>
+          </ul>
+          <div class="note warn" style="margin-top:14px"><div class="lab">为什么</div><div>把「预计减排量」计入估值，是这类平台最常见的自我欺骗。它同时放大合规风险与 LP 诉讼风险。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 退出 ============ -->
+  <section class="section" id="exit">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-num"><b>04</b> EXIT &amp; DUAL RETURN</div>
+        <h2 class="sec-title">退出：股权对价与碳权益对价，分开算、分开分</h2>
+        <p class="sec-sub">并购方可能只要股权不要碳权益，也可能相反。混在一起算，必然在分配时打架。</p>
+      </div>
+
+      <div class="kpi-band four reveal">
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">股权价值变动</div><div class="kpi-v b"><span data-count="2.4" data-dec="1">2.4</span><span class="u">×</span></div><div class="kpi-l">MOIC · 示例</div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">已实现碳权益收益</div><div class="kpi-v g">¥ <span data-count="1.82" data-dec="2">1.82</span><span class="u">m</span></div><div class="kpi-l">碳信用销售 + 分配折算 · 示例</div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">未实现碳权益存量</div><div class="kpi-v a"><span data-count="18400">18,400</span><span class="u">t</span></div><div class="kpi-l">已签发未注销 · 示例</div></div>
+        <div class="kpi"><div class="kpi-l" style="margin:0 0 8px">carry 口径</div><div class="kpi-v">B</div><div class="kpi-l">含碳权益收益 · 示例</div></div>
+      </div>
+
+      <div class="split" style="margin-top:16px">
+        <div class="reveal">
+          <h3 style="font-size:15px;margin:0 0 10px">退出对价拆分（示例：并购退出）</h3>
+          <div class="tbl-wrap">
+            <div class="tbl-scroll">
+              <table>
+                <thead><tr><th style="width:34%">对价类型</th><th class="n">金额</th><th class="n">分配对象</th></tr></thead>
+                <tbody>
+                  <tr><td>股权对价（现金）</td><td class="n">¥ 42,000,000</td><td class="n">股东按持股比例</td></tr>
+                  <tr><td>股权对价（earn-out）</td><td class="n">¥ 8,000,000</td><td class="n">达标后分期</td></tr>
+                  <tr><td>碳权益对价（存量转让）</td><td class="n">¥ 3,240,000</td><td class="n">按 Entitlement 分配</td></tr>
+                  <tr><td>碳权益保留（并购方要求）</td><td class="n">6,000 t</td><td class="n">不折现，转登记簿持有人</td></tr>
+                  <tr><td>合计可分配</td><td class="n"><b>¥ 53,240,000</b></td><td class="n">—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="fig-cap">示例数据，仅演示拆分逻辑。实际分配须经基金合同与投资协议双重校验。</p>
+        </div>
+
+        <div class="reveal" data-delay="80">
+          <div class="card" style="padding:20px">
+            <h3>退出事件处理流程</h3>
+            <div class="steps" style="margin-top:4px">
+              <div class="step"><div class="step-n g" style="width:30px;height:30px;border-radius:8px;font-size:9px">1</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13px">登记退出事件</h4><p style="font-size:12.5px">类型（IPO/并购/老股转让）、时间、对价结构、条件。</p></div></div>
+              <div class="step"><div class="step-n g" style="width:30px;height:30px;border-radius:8px;font-size:9px">2</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13px">拆分对价</h4><p style="font-size:12.5px">股权部分与碳权益部分分别计价，碳权益按批次剩余量核算。</p></div></div>
+              <div class="step"><div class="step-n g" style="width:30px;height:30px;border-radius:8px;font-size:9px">3</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13px">锁定台账</h4><p style="font-size:12.5px">退出后该项目的分配与注销功能冻结，只剩查询。</p></div></div>
+              <div class="step"><div class="step-n g" style="width:30px;height:30px;border-radius:8px;font-size:9px">4</div><div class="step-body" style="padding-top:0"><h4 style="font-size:13px">执行分配</h4><p style="font-size:12.5px">按瀑布顺序出分配表，生成 LP 与投资企业各自的结算单。</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="pagenav reveal">
+      <a href="carbon.html"><span class="pn-l">上一章</span><span class="pn-t">← 碳权益层</span></a>
+      <a class="next" href="compliance.html"><span class="pn-l">下一章</span><span class="pn-t">合规风控 →</span></a>
+    </div>
+  </div>
+
+</main>
+
+<footer id="site-footer"></footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
